@@ -1,0 +1,93 @@
+﻿<div ngController="ConfigurationQueriesController">
+    <br />
+    <feedback type=typeMessage message=message></feedback>
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="col-md-10 col-md-offset-1">
+        <h1>
+          Configuration Queries
+        </h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-cog"></i> Configuration</li>
+          <li class="breadcrumb-item active"><a href="/#/main/configuration/listQueries"> List Queries</a></li>
+          <li ng-if="type == -1" class="breadcrumb-item active"> Create </li>
+          <li ng-if="type != -1" class="breadcrumb-item active"> Update</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-10 col-md-offset-1">
+          <!-- general form elements -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Form</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+              <form name="form" role="form" ng-submit="sendRequest(request, form)" novalidate>
+                  <div class="box-body">
+
+                      <div class="form-group">
+                          <label for="QueryType">Query Type</label>
+                          <select class="form-control select2" name="QueryType" ng-model="request.IntegrationTypeId" style="width: 100%;" required>
+                              <option selected="selected" disabled value="">Select</option>
+                              <option ng-repeat="integrationType in integrationsType" value="{{integrationType.IntegrationTypeId}}">{{integrationType.Name}}</option>
+                          </select>
+                          <div ng-if="form.TypeQuery.$touched || form.$submitted">
+                              <div ng-messages="form.QueryType.$error" role="alert">
+                                  <div class="help-block error-text" ng-message="required">* Query type is required.</div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label>Query Name</label>
+                          <input ng-model="request.QueryName" type="text" class="form-control" id="QueryName" name="QueryName" placeholder="Enter Query Name" ng-required="true">
+                          <div ng-if="form.QueryName.$touched || form.$submitted">
+                              <div ng-messages="form.QueryName.$error" role="alert">
+                                  <div class="help-block error-text" ng-message="required">* Query Name is required.</div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="Queries">Query</label>
+                          <div class="form-group">
+                              <textarea name="Queries" ng-model="request.Query1" id="Queries" name="Queries" class="form-control" rows="3" required></textarea>
+                          </div>
+                          <div ng-if="form.Queries.$touched || form.$submitted">
+                              <div ng-messages="form.Queries.$error" role="alert">
+                                  <div class="help-block error-text" ng-message="required">* Query is required.</div>
+                              </div>
+                          </div>
+                      </div>
+
+                      <div class="form-group">
+                          <label for="Queries">Query Description</label>
+                          <div class="form-group">
+                              <textarea name="QueryDescription" ng-model="request.Description" id="QueryDescription" class="form-control" rows="3" required></textarea>
+                          </div>
+                          <div ng-if="form.QueryDescription.$touched || form.$submitted">
+                              <div ng-messages="form.QueryDescription.$error" role="alert">
+                                  <div class="help-block error-text" ng-message="required">* Query Description is required.</div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <!-- /.box-body -->
+                  <div class="box-footer" ng-controller="AlertController">
+                    <button type="button" class="btn btn-primary" sweetalert sweet-options="{{sweet.option}}" sweet-on-confirm="$parent.form.$submitted = true; sendRequest(request, form)" sweet-on-cancel="return">Submit</button>
+                  </div>
+              </form>
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+    </section>
+   <!-- /.content -->
+</div>

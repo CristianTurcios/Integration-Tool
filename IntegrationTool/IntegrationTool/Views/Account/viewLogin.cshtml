@@ -1,0 +1,36 @@
+﻿<div id="viewLogin">
+    <br /><br />
+    <div class="col-md-offset-4 col-md-4" id="login">
+        <br />
+        <feedback type=typeMessage message=message></feedback>  
+        <div class="lockscreen-logo">
+            <b>IntegrationTool</b>
+        </div>
+        <form name="form" role="form" ng-submit="sendRequest(request, form)" novalidate>
+            <div class="box-body>
+                <div class="form-group">
+                    <label>Username</label>
+                    <input ng-model="request.Username" name="Username" type="text" class="form-control input-login" placeholder="Enter your username" ng-required="true">
+                    <div ng-if="form.Username.$touched || form.$submitted">
+                        <div ng-messages="form.Username.$error" role="alert">
+                            <div class="help-block error-text" ng-message="required">* Username is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input ng-model="request.Password" name="Password" type="password" class="form-control input-login" placeholder="Enter your password" ng-required="true">
+                    <div ng-if="form.Password.$touched || form.$submitted">
+                        <div ng-messages="form.Password.$error" role="alert">
+                            <div class="help-block error-text" ng-message="required">* Password is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </form>
+        <br />
+    </div>
+</div>

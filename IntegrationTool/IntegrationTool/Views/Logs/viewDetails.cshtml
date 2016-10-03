@@ -1,0 +1,72 @@
+﻿<div>
+    <br />
+    <feedback type=typeMessage message=message></feedback>
+
+    <div ng-show="isloading" id="Preloader"></div>
+
+    <div ng-if="!isloading">
+        <section class="content-header">
+            <div class="col-md-10 col-md-offset-1">
+            <h1>
+                Integration Details For {{integrationName}}
+            </h1>
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><i class="fa fa-cog"></i> Logs </li>
+                <li class="breadcrumb-item"><a href="/#/main/logs/listIntegrationLogs"> Integrations </a></li>
+                <li class="breadcrumb-item active"> Details </li>
+            </ol>
+            </div>
+        </section>
+
+        <section class="content">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="box box-danger">
+                        <div class="box-header with-border">
+                            <h3 class="box-title">Details</h3>
+                        </div>
+                        <div class="box-body table-responsive">
+                          <table id="datatable" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                  <th>Result</th>
+                                  <th>Total</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr >
+                                    <td>Completed</td>
+                                    <td ng-if="error">--</td>
+                                    <td ng-if="!error">{{details.dataSetStatus.completedCount}}</td>
+                                </tr>
+                                <tr >
+                                    <td>Queued</td>
+                                    <td ng-if="error">--</td>
+                                    <td ng-if="!error">{{details.dataSetStatus.queuedCount}}</td>
+                                </tr>
+                                <tr >
+                                    <td>Warning</td>
+                                    <td ng-if="error">--</td>
+                                    <td ng-if="!error">{{details.dataSetStatus.warningCount}}</td>
+                                </tr>
+                                <tr >
+                                    <td>Error</td>
+                                    <td ng-if="error">--</td>
+                                    <td ng-if="!error">{{details.dataSetStatus.errorCount}}</td>
+                                </tr>
+                            </tbody>
+                            <tfoot>
+                                <tr>
+                                    <th>Result</th>
+                                  <th>Total</th>
+                                </tr>
+                            </tfoot>
+                          </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+</div>

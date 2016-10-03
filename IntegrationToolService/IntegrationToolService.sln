@@ -1,0 +1,26 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntegrationToolService", "IntegrationToolService\IntegrationToolService.csproj", "{03406039-AF14-4616-A85D-FF22285BFED5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestService", "TestService\TestService.csproj", "{F7ABD859-E8B8-4710-939A-FA782547A94A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{03406039-AF14-4616-A85D-FF22285BFED5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{03406039-AF14-4616-A85D-FF22285BFED5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{03406039-AF14-4616-A85D-FF22285BFED5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{03406039-AF14-4616-A85D-FF22285BFED5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7ABD859-E8B8-4710-939A-FA782547A94A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7ABD859-E8B8-4710-939A-FA782547A94A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7ABD859-E8B8-4710-939A-FA782547A94A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7ABD859-E8B8-4710-939A-FA782547A94A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,86 @@
+﻿<div>
+    <br />
+    <feedback type=typeMessage message=message></feedback>
+
+    <section class="content-header">
+        <div class="col-md-10 col-md-offset-1">
+        <h1>
+            User
+        </h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-cog"></i> Users</li>
+            <li class="breadcrumb-item active"><a href="/#/main/users/list"> List Users</a></li>
+            <li ng-if="type == -1" class="breadcrumb-item active"> Create </li>
+            <li ng-if="type != -1" class="breadcrumb-item active"> Update</li>
+        </ol>
+        </div>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-10 col-md-offset-1">
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Form</h3>
+                    </div>
+                    <form name="form" role="form" ng-submit="sendRequest(request, form)" novalidate>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>Name</label>
+                                <input type="text" class="form-control" name="Name" placeholder="Enter name" ng-model="request.Name" ng-required="true">
+                                <div ng-if="form.Name.$touched || form.$submitted">
+                                    <div ng-messages="form.Name.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Name is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Username</label>
+                                <input type="text" class="form-control" name="Username" placeholder="Enter username" ng-model="request.Username" ng-required="true">
+                                <div ng-if="form.Username.$touched || form.$submitted">
+                                    <div ng-messages="form.Username.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Username is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" name="Email" placeholder="Enter email" ng-model="request.Email" ng-required="true">
+                                <div ng-if="form.Email.$touched || form.$submitted">
+                                    <div ng-messages="form.Email.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Email is required.</div>
+                                        <div class="help-block error-text" ng-message="email">* Is not a valid email.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label>Password</label>
+                                <input type="password" class="form-control" name="Password" placeholder="Enter password" ng-model="request.Password" ng-required="true">
+                                <div ng-if="form.Password.$touched || form.$submitted">
+                                    <div ng-messages="form.Password.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Password is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Resources</label><br />
+                                <div ng-repeat="resource in resources">
+                                    <input type="checkbox" name="Permissions" value="resource.ResourceId" ng-model="request.Permissions[resource.ResourceId]" ng-required="!someSelected(request.Permissions)"> {{resource.Name}}<br />
+                                </div>
+                                <div ng-if="form.Permissions.$invalid">
+                                    <div ng-messages="form.Permissions.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Permissions are required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        <div class="box-footer" ng-controller="AlertController">
+                            <button type="button" class="btn btn-primary" sweetalert sweet-options="{{sweet.option}}" sweet-on-confirm="$parent.form.$submitted = true; sendRequest(request, form)" sweet-on-cancel="return">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,1521 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="IntegrationToolModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityContainer Name="IntegrationToolModelStoreContainer">
+          <EntitySet Name="ActiveDirectoryParameters" EntityType="IntegrationToolModel.Store.ActiveDirectoryParameters" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Calendars" EntityType="IntegrationToolModel.Store.Calendars" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DatabaseParameters" EntityType="IntegrationToolModel.Store.DatabaseParameters" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Engines" EntityType="IntegrationToolModel.Store.Engines" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FlatFiles" EntityType="IntegrationToolModel.Store.FlatFiles" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="FlatFilesParameters" EntityType="IntegrationToolModel.Store.FlatFilesParameters" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IntegrationCategories" EntityType="IntegrationToolModel.Store.IntegrationCategories" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IntegrationLogs" EntityType="IntegrationToolModel.Store.IntegrationLogs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Integrations" EntityType="IntegrationToolModel.Store.Integrations" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="IntegrationsType" EntityType="IntegrationToolModel.Store.IntegrationsType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Keys" EntityType="IntegrationToolModel.Store.Keys" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="OperationsWebServices" EntityType="IntegrationToolModel.Store.OperationsWebServices" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="PathReports" EntityType="IntegrationToolModel.Store.PathReports" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Permissions" EntityType="IntegrationToolModel.Store.Permissions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Queries" EntityType="IntegrationToolModel.Store.Queries" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="QueryParameters" EntityType="IntegrationToolModel.Store.QueryParameters" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Recurrences" EntityType="IntegrationToolModel.Store.Recurrences" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Resources" EntityType="IntegrationToolModel.Store.Resources" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ServerSMTPParameters" EntityType="IntegrationToolModel.Store.ServerSMTPParameters" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Status" EntityType="IntegrationToolModel.Store.Status" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="sysdiagrams" EntityType="IntegrationToolModel.Store.sysdiagrams" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SystemLogs" EntityType="IntegrationToolModel.Store.SystemLogs" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="IntegrationToolModel.Store.Users" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UsersType" EntityType="IntegrationToolModel.Store.UsersType" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="WebServices" EntityType="IntegrationToolModel.Store.WebServices" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="FK_CalendarsIntegrations_IntegrationId" Association="IntegrationToolModel.Store.FK_CalendarsIntegrations_IntegrationId">
+            <End Role="Integrations" EntitySet="Integrations" />
+            <End Role="Calendars" EntitySet="Calendars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalendarsRecurrences_RecurrenceId" Association="IntegrationToolModel.Store.FK_CalendarsRecurrences_RecurrenceId">
+            <End Role="Recurrences" EntitySet="Recurrences" />
+            <End Role="Calendars" EntitySet="Calendars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DatabaseParametersEngines_EngineId" Association="IntegrationToolModel.Store.FK_DatabaseParametersEngines_EngineId">
+            <End Role="Engines" EntitySet="Engines" />
+            <End Role="DatabaseParameters" EntitySet="DatabaseParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationLogsIntegrations_IntegrationId" Association="IntegrationToolModel.Store.FK_IntegrationLogsIntegrations_IntegrationId">
+            <End Role="Integrations" EntitySet="Integrations" />
+            <End Role="IntegrationLogs" EntitySet="IntegrationLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsDatabaseParameters_DatabaseParametersId" Association="IntegrationToolModel.Store.FK_IntegrationsDatabaseParameters_DatabaseParametersId">
+            <End Role="DatabaseParameters" EntitySet="DatabaseParameters" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsFlatFiles_FlatFileId" Association="IntegrationToolModel.Store.FK_IntegrationsFlatFiles_FlatFileId">
+            <End Role="FlatFiles" EntitySet="FlatFiles" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsFlatFilesParameters_FlatFileParameterId" Association="IntegrationToolModel.Store.FK_IntegrationsFlatFilesParameters_FlatFileParameterId">
+            <End Role="FlatFilesParameters" EntitySet="FlatFilesParameters" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsIntegrationCategories_IntegrationCategoryId" Association="IntegrationToolModel.Store.FK_IntegrationsIntegrationCategories_IntegrationCategoryId">
+            <End Role="IntegrationCategories" EntitySet="IntegrationCategories" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsIntegrationsType_IntegrationTypeId" Association="IntegrationToolModel.Store.FK_IntegrationsIntegrationsType_IntegrationTypeId">
+            <End Role="IntegrationsType" EntitySet="IntegrationsType" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsOperationsWebServices_OperationWebServiceId" Association="IntegrationToolModel.Store.FK_IntegrationsOperationsWebServices_OperationWebServiceId">
+            <End Role="OperationsWebServices" EntitySet="OperationsWebServices" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsQueries_QueryId" Association="IntegrationToolModel.Store.FK_IntegrationsQueries_QueryId">
+            <End Role="Queries" EntitySet="Queries" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsStatus_StatusId" Association="IntegrationToolModel.Store.FK_IntegrationsStatus_StatusId">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsUsers_UserId" Association="IntegrationToolModel.Store.FK_IntegrationsUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsWebServices_WebServiceId" Association="IntegrationToolModel.Store.FK_IntegrationsWebServices_WebServiceId">
+            <End Role="WebServices" EntitySet="WebServices" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermissionsResources_ResourceId" Association="IntegrationToolModel.Store.FK_PermissionsResources_ResourceId">
+            <End Role="Resources" EntitySet="Resources" />
+            <End Role="Permissions" EntitySet="Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermissionsUsers_UserId" Association="IntegrationToolModel.Store.FK_PermissionsUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Permissions" EntitySet="Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QueriesIntegrationsType_IntegrationTypeId" Association="IntegrationToolModel.Store.FK_QueriesIntegrationsType_IntegrationTypeId">
+            <End Role="IntegrationsType" EntitySet="IntegrationsType" />
+            <End Role="Queries" EntitySet="Queries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QueryParametersIntegrations_IntegrationId" Association="IntegrationToolModel.Store.FK_QueryParametersIntegrations_IntegrationId">
+            <End Role="Integrations" EntitySet="Integrations" />
+            <End Role="QueryParameters" EntitySet="QueryParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemLogsIntegrations_IntegrationId" Association="IntegrationToolModel.Store.FK_SystemLogsIntegrations_IntegrationId">
+            <End Role="Integrations" EntitySet="Integrations" />
+            <End Role="SystemLogs" EntitySet="SystemLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersStatus_StatusId" Association="IntegrationToolModel.Store.FK_UsersStatus_StatusId">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersUsersType_UserTypeId" Association="IntegrationToolModel.Store.FK_UsersUsersType_UserTypeId">
+            <End Role="UsersType" EntitySet="UsersType" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ActiveDirectoryParameters">
+          <Key>
+            <PropertyRef Name="ActiveDirectoryId" />
+          </Key>
+          <Property Name="ActiveDirectoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ADPath" Type="varchar(max)" Nullable="false" />
+          <Property Name="ADDomain" Type="varchar" Nullable="false" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="Calendars">
+          <Key>
+            <PropertyRef Name="CalendarId" />
+          </Key>
+          <Property Name="CalendarId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ExecutionStartDate" Type="datetime" Nullable="false" />
+          <Property Name="NextExecutionDate" Type="datetime" />
+          <Property Name="Emails" Type="varchar(max)" />
+          <Property Name="IntegrationId" Type="int" Nullable="false" />
+          <Property Name="RecurrenceId" Type="int" Nullable="false" />
+          <Property Name="ExecutionEndDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DatabaseParameters">
+          <Key>
+            <PropertyRef Name="DatabaseParametersId" />
+          </Key>
+          <Property Name="DatabaseParametersId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Ip" Type="varchar" Nullable="false" MaxLength="30" />
+          <Property Name="Port" Type="varchar" MaxLength="20" />
+          <Property Name="Instance" Type="varchar" MaxLength="80" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="EngineId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Engines">
+          <Key>
+            <PropertyRef Name="EngineId" />
+          </Key>
+          <Property Name="EngineId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="FlatFiles">
+          <Key>
+            <PropertyRef Name="FlatFileId" />
+          </Key>
+          <Property Name="FlatFileId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="FlatFilesParameters">
+          <Key>
+            <PropertyRef Name="FlatFileParameterId" />
+          </Key>
+          <Property Name="FlatFileParameterId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Location" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IntegrationCategories">
+          <Key>
+            <PropertyRef Name="IntegrationCategoryId" />
+          </Key>
+          <Property Name="IntegrationCategoryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="IntegrationLogs">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ReferenceCode" Type="varchar(max)" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="IntegrationId" Type="int" Nullable="false" />
+          <Property Name="Status" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Integrations">
+          <Key>
+            <PropertyRef Name="IntegrationId" />
+          </Key>
+          <Property Name="IntegrationId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IntegrationDate" Type="datetime" Nullable="false" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="WebServiceId" Type="int" Nullable="false" />
+          <Property Name="DatabaseParametersId" Type="int" Nullable="false" />
+          <Property Name="FlatFileId" Type="int" Nullable="false" />
+          <Property Name="FlatFileParameterId" Type="int" Nullable="false" />
+          <Property Name="IntegrationTypeId" Type="int" Nullable="false" />
+          <Property Name="QueryId" Type="int" Nullable="false" />
+          <Property Name="IntegrationCategoryId" Type="int" Nullable="false" />
+          <Property Name="CurlParameters" Type="varchar" MaxLength="120" />
+          <Property Name="OperationWebServiceId" Type="int" Nullable="false" />
+          <Property Name="IntegrationName" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="IntegrationsType">
+          <Key>
+            <PropertyRef Name="IntegrationTypeId" />
+          </Key>
+          <Property Name="IntegrationTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Identifier" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Keys">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="KeyValue" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Description" Type="varchar" Nullable="false" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="OperationsWebServices">
+          <Key>
+            <PropertyRef Name="OperationWebServiceId" />
+          </Key>
+          <Property Name="OperationWebServiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Identifier" Type="varchar" Nullable="false" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="PathReports">
+          <Key>
+            <PropertyRef Name="PathReportId" />
+          </Key>
+          <Property Name="PathReportId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Location" Type="varchar" Nullable="false" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="Permissions">
+          <Key>
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="PermissionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" Nullable="false" />
+          <Property Name="ResourceId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Queries">
+          <Key>
+            <PropertyRef Name="QueryId" />
+          </Key>
+          <Property Name="QueryId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Query" Type="varchar(max)" Nullable="false" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="IntegrationTypeId" Type="int" Nullable="false" />
+          <Property Name="QueryName" Type="varchar" Nullable="false" MaxLength="200" />
+        </EntityType>
+        <EntityType Name="QueryParameters">
+          <Key>
+            <PropertyRef Name="QueryParameterId" />
+          </Key>
+          <Property Name="QueryParameterId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="100" />
+          <Property Name="Value" Type="varchar(max)" Nullable="false" />
+          <Property Name="IntegrationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Recurrences">
+          <Key>
+            <PropertyRef Name="RecurrenceId" />
+          </Key>
+          <Property Name="RecurrenceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NameRecurrence" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Resources">
+          <Key>
+            <PropertyRef Name="ResourceId" />
+          </Key>
+          <Property Name="ResourceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="ServerSMTPParameters">
+          <Key>
+            <PropertyRef Name="ServerSMTPParametersId" />
+          </Key>
+          <Property Name="ServerSMTPParametersId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="NameServerSMTP" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="Port" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="UsernameSMTP" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="PasswordSMTP" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="EmailFrom" Type="varchar" Nullable="false" MaxLength="200" />
+          <Property Name="Subject" Type="varchar(max)" Nullable="false" />
+          <Property Name="Body" Type="varchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="80" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" Nullable="false" MaxLength="128" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="SystemLogs">
+          <Key>
+            <PropertyRef Name="SystemLogId" />
+          </Key>
+          <Property Name="SystemLogId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="varchar(max)" Nullable="false" />
+          <Property Name="ErrorDate" Type="datetime" Nullable="false" />
+          <Property Name="IntegrationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="UserTypeId" Type="int" Nullable="false" />
+          <Property Name="StatusId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsersType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="varchar" Nullable="false" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="WebServices">
+          <Key>
+            <PropertyRef Name="WebServiceId" />
+          </Key>
+          <Property Name="WebServiceId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Endpoint" Type="varchar(max)" Nullable="false" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="80" />
+          <Property Name="Password" Type="varchar" Nullable="false" MaxLength="80" />
+        </EntityType>
+        <Association Name="FK_CalendarsIntegrations_IntegrationId">
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="1" />
+          <End Role="Calendars" Type="IntegrationToolModel.Store.Calendars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Integrations">
+              <PropertyRef Name="IntegrationId" />
+            </Principal>
+            <Dependent Role="Calendars">
+              <PropertyRef Name="IntegrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalendarsRecurrences_RecurrenceId">
+          <End Role="Recurrences" Type="IntegrationToolModel.Store.Recurrences" Multiplicity="1" />
+          <End Role="Calendars" Type="IntegrationToolModel.Store.Calendars" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurrences">
+              <PropertyRef Name="RecurrenceId" />
+            </Principal>
+            <Dependent Role="Calendars">
+              <PropertyRef Name="RecurrenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DatabaseParametersEngines_EngineId">
+          <End Role="Engines" Type="IntegrationToolModel.Store.Engines" Multiplicity="1" />
+          <End Role="DatabaseParameters" Type="IntegrationToolModel.Store.DatabaseParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engines">
+              <PropertyRef Name="EngineId" />
+            </Principal>
+            <Dependent Role="DatabaseParameters">
+              <PropertyRef Name="EngineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationLogsIntegrations_IntegrationId">
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="1" />
+          <End Role="IntegrationLogs" Type="IntegrationToolModel.Store.IntegrationLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Integrations">
+              <PropertyRef Name="IntegrationId" />
+            </Principal>
+            <Dependent Role="IntegrationLogs">
+              <PropertyRef Name="IntegrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsDatabaseParameters_DatabaseParametersId">
+          <End Role="DatabaseParameters" Type="IntegrationToolModel.Store.DatabaseParameters" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatabaseParameters">
+              <PropertyRef Name="DatabaseParametersId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="DatabaseParametersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsFlatFiles_FlatFileId">
+          <End Role="FlatFiles" Type="IntegrationToolModel.Store.FlatFiles" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlatFiles">
+              <PropertyRef Name="FlatFileId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="FlatFileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsFlatFilesParameters_FlatFileParameterId">
+          <End Role="FlatFilesParameters" Type="IntegrationToolModel.Store.FlatFilesParameters" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlatFilesParameters">
+              <PropertyRef Name="FlatFileParameterId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="FlatFileParameterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsIntegrationCategories_IntegrationCategoryId">
+          <End Role="IntegrationCategories" Type="IntegrationToolModel.Store.IntegrationCategories" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntegrationCategories">
+              <PropertyRef Name="IntegrationCategoryId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="IntegrationCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsIntegrationsType_IntegrationTypeId">
+          <End Role="IntegrationsType" Type="IntegrationToolModel.Store.IntegrationsType" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntegrationsType">
+              <PropertyRef Name="IntegrationTypeId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="IntegrationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsOperationsWebServices_OperationWebServiceId">
+          <End Role="OperationsWebServices" Type="IntegrationToolModel.Store.OperationsWebServices" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationsWebServices">
+              <PropertyRef Name="OperationWebServiceId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="OperationWebServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsQueries_QueryId">
+          <End Role="Queries" Type="IntegrationToolModel.Store.Queries" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Queries">
+              <PropertyRef Name="QueryId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="QueryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsStatus_StatusId">
+          <End Role="Status" Type="IntegrationToolModel.Store.Status" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsUsers_UserId">
+          <End Role="Users" Type="IntegrationToolModel.Store.Users" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsWebServices_WebServiceId">
+          <End Role="WebServices" Type="IntegrationToolModel.Store.WebServices" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebServices">
+              <PropertyRef Name="WebServiceId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="WebServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermissionsResources_ResourceId">
+          <End Role="Resources" Type="IntegrationToolModel.Store.Resources" Multiplicity="1" />
+          <End Role="Permissions" Type="IntegrationToolModel.Store.Permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resources">
+              <PropertyRef Name="ResourceId" />
+            </Principal>
+            <Dependent Role="Permissions">
+              <PropertyRef Name="ResourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermissionsUsers_UserId">
+          <End Role="Users" Type="IntegrationToolModel.Store.Users" Multiplicity="1" />
+          <End Role="Permissions" Type="IntegrationToolModel.Store.Permissions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Permissions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QueriesIntegrationsType_IntegrationTypeId">
+          <End Role="IntegrationsType" Type="IntegrationToolModel.Store.IntegrationsType" Multiplicity="1" />
+          <End Role="Queries" Type="IntegrationToolModel.Store.Queries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntegrationsType">
+              <PropertyRef Name="IntegrationTypeId" />
+            </Principal>
+            <Dependent Role="Queries">
+              <PropertyRef Name="IntegrationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QueryParametersIntegrations_IntegrationId">
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="1" />
+          <End Role="QueryParameters" Type="IntegrationToolModel.Store.QueryParameters" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Integrations">
+              <PropertyRef Name="IntegrationId" />
+            </Principal>
+            <Dependent Role="QueryParameters">
+              <PropertyRef Name="IntegrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemLogsIntegrations_IntegrationId">
+          <End Role="Integrations" Type="IntegrationToolModel.Store.Integrations" Multiplicity="1" />
+          <End Role="SystemLogs" Type="IntegrationToolModel.Store.SystemLogs" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Integrations">
+              <PropertyRef Name="IntegrationId" />
+            </Principal>
+            <Dependent Role="SystemLogs">
+              <PropertyRef Name="IntegrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersStatus_StatusId">
+          <End Role="Status" Type="IntegrationToolModel.Store.Status" Multiplicity="1" />
+          <End Role="Users" Type="IntegrationToolModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersUsersType_UserTypeId">
+          <End Role="UsersType" Type="IntegrationToolModel.Store.UsersType" Multiplicity="1" />
+          <End Role="Users" Type="IntegrationToolModel.Store.Users" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersType">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="IntegrationToolModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="IntegrationToolEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="ActiveDirectoryParameters" EntityType="IntegrationToolModel.ActiveDirectoryParameter" />
+          <EntitySet Name="Calendars" EntityType="IntegrationToolModel.Calendar" />
+          <EntitySet Name="DatabaseParameters" EntityType="IntegrationToolModel.DatabaseParameter" />
+          <EntitySet Name="Engines" EntityType="IntegrationToolModel.Engine" />
+          <EntitySet Name="FlatFiles" EntityType="IntegrationToolModel.FlatFile" />
+          <EntitySet Name="FlatFilesParameters" EntityType="IntegrationToolModel.FlatFilesParameter" />
+          <EntitySet Name="IntegrationCategories" EntityType="IntegrationToolModel.IntegrationCategory" />
+          <EntitySet Name="IntegrationLogs" EntityType="IntegrationToolModel.IntegrationLog" />
+          <EntitySet Name="Integrations" EntityType="IntegrationToolModel.Integration" />
+          <EntitySet Name="IntegrationsTypes" EntityType="IntegrationToolModel.IntegrationsType" />
+          <EntitySet Name="Keys" EntityType="IntegrationToolModel.Key" />
+          <EntitySet Name="OperationsWebServices" EntityType="IntegrationToolModel.OperationsWebService" />
+          <EntitySet Name="PathReports" EntityType="IntegrationToolModel.PathReport" />
+          <EntitySet Name="Permissions" EntityType="IntegrationToolModel.Permission" />
+          <EntitySet Name="Queries" EntityType="IntegrationToolModel.Query" />
+          <EntitySet Name="QueryParameters" EntityType="IntegrationToolModel.QueryParameter" />
+          <EntitySet Name="Recurrences" EntityType="IntegrationToolModel.Recurrence" />
+          <EntitySet Name="Resources" EntityType="IntegrationToolModel.Resource" />
+          <EntitySet Name="ServerSMTPParameters" EntityType="IntegrationToolModel.ServerSMTPParameter" />
+          <EntitySet Name="Status" EntityType="IntegrationToolModel.Status" />
+          <EntitySet Name="sysdiagrams" EntityType="IntegrationToolModel.sysdiagram" />
+          <EntitySet Name="SystemLogs" EntityType="IntegrationToolModel.SystemLog" />
+          <EntitySet Name="Users" EntityType="IntegrationToolModel.User" />
+          <EntitySet Name="UsersTypes" EntityType="IntegrationToolModel.UsersType" />
+          <EntitySet Name="WebServices" EntityType="IntegrationToolModel.WebService" />
+          <AssociationSet Name="FK_CalendarsIntegrations_IntegrationId" Association="IntegrationToolModel.FK_CalendarsIntegrations_IntegrationId">
+            <End Role="Integrations" EntitySet="Integrations" />
+            <End Role="Calendars" EntitySet="Calendars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CalendarsRecurrences_RecurrenceId" Association="IntegrationToolModel.FK_CalendarsRecurrences_RecurrenceId">
+            <End Role="Recurrences" EntitySet="Recurrences" />
+            <End Role="Calendars" EntitySet="Calendars" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DatabaseParametersEngines_EngineId" Association="IntegrationToolModel.FK_DatabaseParametersEngines_EngineId">
+            <End Role="Engines" EntitySet="Engines" />
+            <End Role="DatabaseParameters" EntitySet="DatabaseParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsDatabaseParameters_DatabaseParametersId" Association="IntegrationToolModel.FK_IntegrationsDatabaseParameters_DatabaseParametersId">
+            <End Role="DatabaseParameters" EntitySet="DatabaseParameters" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsFlatFiles_FlatFileId" Association="IntegrationToolModel.FK_IntegrationsFlatFiles_FlatFileId">
+            <End Role="FlatFiles" EntitySet="FlatFiles" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsFlatFilesParameters_FlatFileParameterId" Association="IntegrationToolModel.FK_IntegrationsFlatFilesParameters_FlatFileParameterId">
+            <End Role="FlatFilesParameters" EntitySet="FlatFilesParameters" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsIntegrationCategories_IntegrationCategoryId" Association="IntegrationToolModel.FK_IntegrationsIntegrationCategories_IntegrationCategoryId">
+            <End Role="IntegrationCategories" EntitySet="IntegrationCategories" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationLogsIntegrations_IntegrationId" Association="IntegrationToolModel.FK_IntegrationLogsIntegrations_IntegrationId">
+            <End Role="Integrations" EntitySet="Integrations" />
+            <End Role="IntegrationLogs" EntitySet="IntegrationLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsIntegrationsType_IntegrationTypeId" Association="IntegrationToolModel.FK_IntegrationsIntegrationsType_IntegrationTypeId">
+            <End Role="IntegrationsType" EntitySet="IntegrationsTypes" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsOperationsWebServices_OperationWebServiceId" Association="IntegrationToolModel.FK_IntegrationsOperationsWebServices_OperationWebServiceId">
+            <End Role="OperationsWebServices" EntitySet="OperationsWebServices" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsQueries_QueryId" Association="IntegrationToolModel.FK_IntegrationsQueries_QueryId">
+            <End Role="Queries" EntitySet="Queries" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsStatus_StatusId" Association="IntegrationToolModel.FK_IntegrationsStatus_StatusId">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsUsers_UserId" Association="IntegrationToolModel.FK_IntegrationsUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_IntegrationsWebServices_WebServiceId" Association="IntegrationToolModel.FK_IntegrationsWebServices_WebServiceId">
+            <End Role="WebServices" EntitySet="WebServices" />
+            <End Role="Integrations" EntitySet="Integrations" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QueryParametersIntegrations_IntegrationId" Association="IntegrationToolModel.FK_QueryParametersIntegrations_IntegrationId">
+            <End Role="Integrations" EntitySet="Integrations" />
+            <End Role="QueryParameters" EntitySet="QueryParameters" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SystemLogsIntegrations_IntegrationId" Association="IntegrationToolModel.FK_SystemLogsIntegrations_IntegrationId">
+            <End Role="Integrations" EntitySet="Integrations" />
+            <End Role="SystemLogs" EntitySet="SystemLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_QueriesIntegrationsType_IntegrationTypeId" Association="IntegrationToolModel.FK_QueriesIntegrationsType_IntegrationTypeId">
+            <End Role="IntegrationsType" EntitySet="IntegrationsTypes" />
+            <End Role="Queries" EntitySet="Queries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermissionsResources_ResourceId" Association="IntegrationToolModel.FK_PermissionsResources_ResourceId">
+            <End Role="Resources" EntitySet="Resources" />
+            <End Role="Permissions" EntitySet="Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PermissionsUsers_UserId" Association="IntegrationToolModel.FK_PermissionsUsers_UserId">
+            <End Role="Users" EntitySet="Users" />
+            <End Role="Permissions" EntitySet="Permissions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersStatus_StatusId" Association="IntegrationToolModel.FK_UsersStatus_StatusId">
+            <End Role="Status" EntitySet="Status" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UsersUsersType_UserTypeId" Association="IntegrationToolModel.FK_UsersUsersType_UserTypeId">
+            <End Role="UsersType" EntitySet="UsersTypes" />
+            <End Role="Users" EntitySet="Users" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="ActiveDirectoryParameter">
+          <Key>
+            <PropertyRef Name="ActiveDirectoryId" />
+          </Key>
+          <Property Name="ActiveDirectoryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ADPath" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ADDomain" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Calendar">
+          <Key>
+            <PropertyRef Name="CalendarId" />
+          </Key>
+          <Property Name="CalendarId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ExecutionStartDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NextExecutionDate" Type="DateTime" Precision="3" />
+          <Property Name="Emails" Type="String" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="IntegrationId" Type="Int32" Nullable="false" />
+          <Property Name="RecurrenceId" Type="Int32" Nullable="false" />
+          <Property Name="ExecutionEndDate" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Integration" Relationship="IntegrationToolModel.FK_CalendarsIntegrations_IntegrationId" FromRole="Calendars" ToRole="Integrations" />
+          <NavigationProperty Name="Recurrence" Relationship="IntegrationToolModel.FK_CalendarsRecurrences_RecurrenceId" FromRole="Calendars" ToRole="Recurrences" />
+        </EntityType>
+        <EntityType Name="DatabaseParameter">
+          <Key>
+            <PropertyRef Name="DatabaseParametersId" />
+          </Key>
+          <Property Name="DatabaseParametersId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Ip" Type="String" Nullable="false" MaxLength="30" Unicode="false" FixedLength="false" />
+          <Property Name="Port" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="Instance" Type="String" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="EngineId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Engine" Relationship="IntegrationToolModel.FK_DatabaseParametersEngines_EngineId" FromRole="DatabaseParameters" ToRole="Engines" />
+          <NavigationProperty Name="Integrations" Relationship="IntegrationToolModel.FK_IntegrationsDatabaseParameters_DatabaseParametersId" FromRole="DatabaseParameters" ToRole="Integrations" />
+        </EntityType>
+        <EntityType Name="Engine">
+          <Key>
+            <PropertyRef Name="EngineId" />
+          </Key>
+          <Property Name="EngineId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="DatabaseParameters" Relationship="IntegrationToolModel.FK_DatabaseParametersEngines_EngineId" FromRole="Engines" ToRole="DatabaseParameters" />
+        </EntityType>
+        <EntityType Name="FlatFile">
+          <Key>
+            <PropertyRef Name="FlatFileId" />
+          </Key>
+          <Property Name="FlatFileId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Integrations" Relationship="IntegrationToolModel.FK_IntegrationsFlatFiles_FlatFileId" FromRole="FlatFiles" ToRole="Integrations" />
+        </EntityType>
+        <EntityType Name="FlatFilesParameter">
+          <Key>
+            <PropertyRef Name="FlatFileParameterId" />
+          </Key>
+          <Property Name="FlatFileParameterId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Integrations" Relationship="IntegrationToolModel.FK_IntegrationsFlatFilesParameters_FlatFileParameterId" FromRole="FlatFilesParameters" ToRole="Integrations" />
+        </EntityType>
+        <EntityType Name="IntegrationCategory">
+          <Key>
+            <PropertyRef Name="IntegrationCategoryId" />
+          </Key>
+          <Property Name="IntegrationCategoryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Integrations" Relationship="IntegrationToolModel.FK_IntegrationsIntegrationCategories_IntegrationCategoryId" FromRole="IntegrationCategories" ToRole="Integrations" />
+        </EntityType>
+        <EntityType Name="IntegrationLog">
+          <Key>
+            <PropertyRef Name="LogId" />
+          </Key>
+          <Property Name="LogId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="ReferenceCode" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IntegrationId" Type="Int32" Nullable="false" />
+          <Property Name="Status" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Integration" Relationship="IntegrationToolModel.FK_IntegrationLogsIntegrations_IntegrationId" FromRole="IntegrationLogs" ToRole="Integrations" />
+        </EntityType>
+        <EntityType Name="Integration">
+          <Key>
+            <PropertyRef Name="IntegrationId" />
+          </Key>
+          <Property Name="IntegrationId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="IntegrationDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="WebServiceId" Type="Int32" Nullable="false" />
+          <Property Name="DatabaseParametersId" Type="Int32" Nullable="false" />
+          <Property Name="FlatFileId" Type="Int32" Nullable="false" />
+          <Property Name="FlatFileParameterId" Type="Int32" Nullable="false" />
+          <Property Name="IntegrationTypeId" Type="Int32" Nullable="false" />
+          <Property Name="QueryId" Type="Int32" Nullable="false" />
+          <Property Name="IntegrationCategoryId" Type="Int32" Nullable="false" />
+          <Property Name="CurlParameters" Type="String" MaxLength="120" Unicode="false" FixedLength="false" />
+          <Property Name="OperationWebServiceId" Type="Int32" Nullable="false" />
+          <Property Name="IntegrationName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Calendars" Relationship="IntegrationToolModel.FK_CalendarsIntegrations_IntegrationId" FromRole="Integrations" ToRole="Calendars" />
+          <NavigationProperty Name="DatabaseParameter" Relationship="IntegrationToolModel.FK_IntegrationsDatabaseParameters_DatabaseParametersId" FromRole="Integrations" ToRole="DatabaseParameters" />
+          <NavigationProperty Name="FlatFile" Relationship="IntegrationToolModel.FK_IntegrationsFlatFiles_FlatFileId" FromRole="Integrations" ToRole="FlatFiles" />
+          <NavigationProperty Name="FlatFilesParameter" Relationship="IntegrationToolModel.FK_IntegrationsFlatFilesParameters_FlatFileParameterId" FromRole="Integrations" ToRole="FlatFilesParameters" />
+          <NavigationProperty Name="IntegrationCategory" Relationship="IntegrationToolModel.FK_IntegrationsIntegrationCategories_IntegrationCategoryId" FromRole="Integrations" ToRole="IntegrationCategories" />
+          <NavigationProperty Name="IntegrationLogs" Relationship="IntegrationToolModel.FK_IntegrationLogsIntegrations_IntegrationId" FromRole="Integrations" ToRole="IntegrationLogs" />
+          <NavigationProperty Name="IntegrationsType" Relationship="IntegrationToolModel.FK_IntegrationsIntegrationsType_IntegrationTypeId" FromRole="Integrations" ToRole="IntegrationsType" />
+          <NavigationProperty Name="OperationsWebService" Relationship="IntegrationToolModel.FK_IntegrationsOperationsWebServices_OperationWebServiceId" FromRole="Integrations" ToRole="OperationsWebServices" />
+          <NavigationProperty Name="Query" Relationship="IntegrationToolModel.FK_IntegrationsQueries_QueryId" FromRole="Integrations" ToRole="Queries" />
+          <NavigationProperty Name="Status" Relationship="IntegrationToolModel.FK_IntegrationsStatus_StatusId" FromRole="Integrations" ToRole="Status" />
+          <NavigationProperty Name="User" Relationship="IntegrationToolModel.FK_IntegrationsUsers_UserId" FromRole="Integrations" ToRole="Users" />
+          <NavigationProperty Name="WebService" Relationship="IntegrationToolModel.FK_IntegrationsWebServices_WebServiceId" FromRole="Integrations" ToRole="WebServices" />
+          <NavigationProperty Name="QueryParameters" Relationship="IntegrationToolModel.FK_QueryParametersIntegrations_IntegrationId" FromRole="Integrations" ToRole="QueryParameters" />
+          <NavigationProperty Name="SystemLogs" Relationship="IntegrationToolModel.FK_SystemLogsIntegrations_IntegrationId" FromRole="Integrations" ToRole="SystemLogs" />
+        </EntityType>
+        <EntityType Name="IntegrationsType">
+          <Key>
+            <PropertyRef Name="IntegrationTypeId" />
+          </Key>
+          <Property Name="IntegrationTypeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Identifier" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Integrations" Relationship="IntegrationToolModel.FK_IntegrationsIntegrationsType_IntegrationTypeId" FromRole="IntegrationsType" ToRole="Integrations" />
+          <NavigationProperty Name="Queries" Relationship="IntegrationToolModel.FK_QueriesIntegrationsType_IntegrationTypeId" FromRole="IntegrationsType" ToRole="Queries" />
+        </EntityType>
+        <EntityType Name="Key">
+          <Key>
+            <PropertyRef Name="KeyId" />
+          </Key>
+          <Property Name="KeyId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="KeyValue" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="500" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="OperationsWebService">
+          <Key>
+            <PropertyRef Name="OperationWebServiceId" />
+          </Key>
+          <Property Name="OperationWebServiceId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Identifier" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Integrations" Relationship="IntegrationToolModel.FK_IntegrationsOperationsWebServices_OperationWebServiceId" FromRole="OperationsWebServices" ToRole="Integrations" />
+        </EntityType>
+        <EntityType Name="PathReport">
+          <Key>
+            <PropertyRef Name="PathReportId" />
+          </Key>
+          <Property Name="PathReportId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Location" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Permission">
+          <Key>
+            <PropertyRef Name="PermissionId" />
+          </Key>
+          <Property Name="PermissionId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" Nullable="false" />
+          <Property Name="ResourceId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Resource" Relationship="IntegrationToolModel.FK_PermissionsResources_ResourceId" FromRole="Permissions" ToRole="Resources" />
+          <NavigationProperty Name="User" Relationship="IntegrationToolModel.FK_PermissionsUsers_UserId" FromRole="Permissions" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="Query">
+          <Key>
+            <PropertyRef Name="QueryId" />
+          </Key>
+          <Property Name="QueryId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Query1" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="IntegrationTypeId" Type="Int32" Nullable="false" />
+          <Property Name="QueryName" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Integrations" Relationship="IntegrationToolModel.FK_IntegrationsQueries_QueryId" FromRole="Queries" ToRole="Integrations" />
+          <NavigationProperty Name="IntegrationsType" Relationship="IntegrationToolModel.FK_QueriesIntegrationsType_IntegrationTypeId" FromRole="Queries" ToRole="IntegrationsType" />
+        </EntityType>
+        <EntityType Name="QueryParameter">
+          <Key>
+            <PropertyRef Name="QueryParameterId" />
+          </Key>
+          <Property Name="QueryParameterId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Value" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="IntegrationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Integration" Relationship="IntegrationToolModel.FK_QueryParametersIntegrations_IntegrationId" FromRole="QueryParameters" ToRole="Integrations" />
+        </EntityType>
+        <EntityType Name="Recurrence">
+          <Key>
+            <PropertyRef Name="RecurrenceId" />
+          </Key>
+          <Property Name="RecurrenceId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NameRecurrence" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Calendars" Relationship="IntegrationToolModel.FK_CalendarsRecurrences_RecurrenceId" FromRole="Recurrences" ToRole="Calendars" />
+        </EntityType>
+        <EntityType Name="Resource">
+          <Key>
+            <PropertyRef Name="ResourceId" />
+          </Key>
+          <Property Name="ResourceId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Permissions" Relationship="IntegrationToolModel.FK_PermissionsResources_ResourceId" FromRole="Resources" ToRole="Permissions" />
+        </EntityType>
+        <EntityType Name="ServerSMTPParameter">
+          <Key>
+            <PropertyRef Name="ServerSMTPParametersId" />
+          </Key>
+          <Property Name="ServerSMTPParametersId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="NameServerSMTP" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="Port" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="UsernameSMTP" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="PasswordSMTP" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="EmailFrom" Type="String" Nullable="false" MaxLength="200" Unicode="false" FixedLength="false" />
+          <Property Name="Subject" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Body" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Status">
+          <Key>
+            <PropertyRef Name="StatusId" />
+          </Key>
+          <Property Name="StatusId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Integrations" Relationship="IntegrationToolModel.FK_IntegrationsStatus_StatusId" FromRole="Status" ToRole="Integrations" />
+          <NavigationProperty Name="Users" Relationship="IntegrationToolModel.FK_UsersStatus_StatusId" FromRole="Status" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="sysdiagram">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" Nullable="false" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="SystemLog">
+          <Key>
+            <PropertyRef Name="SystemLogId" />
+          </Key>
+          <Property Name="SystemLogId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Description" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="ErrorDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IntegrationId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Integration" Relationship="IntegrationToolModel.FK_SystemLogsIntegrations_IntegrationId" FromRole="SystemLogs" ToRole="Integrations" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" />
+          <Property Name="StatusId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Integrations" Relationship="IntegrationToolModel.FK_IntegrationsUsers_UserId" FromRole="Users" ToRole="Integrations" />
+          <NavigationProperty Name="Permissions" Relationship="IntegrationToolModel.FK_PermissionsUsers_UserId" FromRole="Users" ToRole="Permissions" />
+          <NavigationProperty Name="Status" Relationship="IntegrationToolModel.FK_UsersStatus_StatusId" FromRole="Users" ToRole="Status" />
+          <NavigationProperty Name="UsersType" Relationship="IntegrationToolModel.FK_UsersUsersType_UserTypeId" FromRole="Users" ToRole="UsersType" />
+        </EntityType>
+        <EntityType Name="UsersType">
+          <Key>
+            <PropertyRef Name="UserTypeId" />
+          </Key>
+          <Property Name="UserTypeId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" Nullable="false" MaxLength="20" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Users" Relationship="IntegrationToolModel.FK_UsersUsersType_UserTypeId" FromRole="UsersType" ToRole="Users" />
+        </EntityType>
+        <EntityType Name="WebService">
+          <Key>
+            <PropertyRef Name="WebServiceId" />
+          </Key>
+          <Property Name="WebServiceId" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Endpoint" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="80" Unicode="false" FixedLength="false" />
+          <NavigationProperty Name="Integrations" Relationship="IntegrationToolModel.FK_IntegrationsWebServices_WebServiceId" FromRole="WebServices" ToRole="Integrations" />
+        </EntityType>
+        <Association Name="FK_CalendarsIntegrations_IntegrationId">
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="1" />
+          <End Role="Calendars" Type="IntegrationToolModel.Calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Integrations">
+              <PropertyRef Name="IntegrationId" />
+            </Principal>
+            <Dependent Role="Calendars">
+              <PropertyRef Name="IntegrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_CalendarsRecurrences_RecurrenceId">
+          <End Role="Recurrences" Type="IntegrationToolModel.Recurrence" Multiplicity="1" />
+          <End Role="Calendars" Type="IntegrationToolModel.Calendar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Recurrences">
+              <PropertyRef Name="RecurrenceId" />
+            </Principal>
+            <Dependent Role="Calendars">
+              <PropertyRef Name="RecurrenceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DatabaseParametersEngines_EngineId">
+          <End Role="Engines" Type="IntegrationToolModel.Engine" Multiplicity="1" />
+          <End Role="DatabaseParameters" Type="IntegrationToolModel.DatabaseParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Engines">
+              <PropertyRef Name="EngineId" />
+            </Principal>
+            <Dependent Role="DatabaseParameters">
+              <PropertyRef Name="EngineId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsDatabaseParameters_DatabaseParametersId">
+          <End Role="DatabaseParameters" Type="IntegrationToolModel.DatabaseParameter" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DatabaseParameters">
+              <PropertyRef Name="DatabaseParametersId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="DatabaseParametersId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsFlatFiles_FlatFileId">
+          <End Role="FlatFiles" Type="IntegrationToolModel.FlatFile" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlatFiles">
+              <PropertyRef Name="FlatFileId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="FlatFileId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsFlatFilesParameters_FlatFileParameterId">
+          <End Role="FlatFilesParameters" Type="IntegrationToolModel.FlatFilesParameter" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="FlatFilesParameters">
+              <PropertyRef Name="FlatFileParameterId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="FlatFileParameterId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsIntegrationCategories_IntegrationCategoryId">
+          <End Role="IntegrationCategories" Type="IntegrationToolModel.IntegrationCategory" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntegrationCategories">
+              <PropertyRef Name="IntegrationCategoryId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="IntegrationCategoryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationLogsIntegrations_IntegrationId">
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="1" />
+          <End Role="IntegrationLogs" Type="IntegrationToolModel.IntegrationLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Integrations">
+              <PropertyRef Name="IntegrationId" />
+            </Principal>
+            <Dependent Role="IntegrationLogs">
+              <PropertyRef Name="IntegrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsIntegrationsType_IntegrationTypeId">
+          <End Role="IntegrationsType" Type="IntegrationToolModel.IntegrationsType" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntegrationsType">
+              <PropertyRef Name="IntegrationTypeId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="IntegrationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsOperationsWebServices_OperationWebServiceId">
+          <End Role="OperationsWebServices" Type="IntegrationToolModel.OperationsWebService" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OperationsWebServices">
+              <PropertyRef Name="OperationWebServiceId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="OperationWebServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsQueries_QueryId">
+          <End Role="Queries" Type="IntegrationToolModel.Query" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Queries">
+              <PropertyRef Name="QueryId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="QueryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsStatus_StatusId">
+          <End Role="Status" Type="IntegrationToolModel.Status" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsUsers_UserId">
+          <End Role="Users" Type="IntegrationToolModel.User" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_IntegrationsWebServices_WebServiceId">
+          <End Role="WebServices" Type="IntegrationToolModel.WebService" Multiplicity="1" />
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="WebServices">
+              <PropertyRef Name="WebServiceId" />
+            </Principal>
+            <Dependent Role="Integrations">
+              <PropertyRef Name="WebServiceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QueryParametersIntegrations_IntegrationId">
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="1" />
+          <End Role="QueryParameters" Type="IntegrationToolModel.QueryParameter" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Integrations">
+              <PropertyRef Name="IntegrationId" />
+            </Principal>
+            <Dependent Role="QueryParameters">
+              <PropertyRef Name="IntegrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SystemLogsIntegrations_IntegrationId">
+          <End Role="Integrations" Type="IntegrationToolModel.Integration" Multiplicity="1" />
+          <End Role="SystemLogs" Type="IntegrationToolModel.SystemLog" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Integrations">
+              <PropertyRef Name="IntegrationId" />
+            </Principal>
+            <Dependent Role="SystemLogs">
+              <PropertyRef Name="IntegrationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_QueriesIntegrationsType_IntegrationTypeId">
+          <End Role="IntegrationsType" Type="IntegrationToolModel.IntegrationsType" Multiplicity="1" />
+          <End Role="Queries" Type="IntegrationToolModel.Query" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="IntegrationsType">
+              <PropertyRef Name="IntegrationTypeId" />
+            </Principal>
+            <Dependent Role="Queries">
+              <PropertyRef Name="IntegrationTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermissionsResources_ResourceId">
+          <End Role="Resources" Type="IntegrationToolModel.Resource" Multiplicity="1" />
+          <End Role="Permissions" Type="IntegrationToolModel.Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Resources">
+              <PropertyRef Name="ResourceId" />
+            </Principal>
+            <Dependent Role="Permissions">
+              <PropertyRef Name="ResourceId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PermissionsUsers_UserId">
+          <End Role="Users" Type="IntegrationToolModel.User" Multiplicity="1" />
+          <End Role="Permissions" Type="IntegrationToolModel.Permission" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Users">
+              <PropertyRef Name="UserId" />
+            </Principal>
+            <Dependent Role="Permissions">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersStatus_StatusId">
+          <End Role="Status" Type="IntegrationToolModel.Status" Multiplicity="1" />
+          <End Role="Users" Type="IntegrationToolModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Status">
+              <PropertyRef Name="StatusId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="StatusId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UsersUsersType_UserTypeId">
+          <End Role="UsersType" Type="IntegrationToolModel.UsersType" Multiplicity="1" />
+          <End Role="Users" Type="IntegrationToolModel.User" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UsersType">
+              <PropertyRef Name="UserTypeId" />
+            </Principal>
+            <Dependent Role="Users">
+              <PropertyRef Name="UserTypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="IntegrationToolModelStoreContainer" CdmEntityContainer="IntegrationToolEntities">
+          <EntitySetMapping Name="ActiveDirectoryParameters">
+            <EntityTypeMapping TypeName="IntegrationToolModel.ActiveDirectoryParameter">
+              <MappingFragment StoreEntitySet="ActiveDirectoryParameters">
+                <ScalarProperty Name="ActiveDirectoryId" ColumnName="ActiveDirectoryId" />
+                <ScalarProperty Name="ADPath" ColumnName="ADPath" />
+                <ScalarProperty Name="ADDomain" ColumnName="ADDomain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Calendars">
+            <EntityTypeMapping TypeName="IntegrationToolModel.Calendar">
+              <MappingFragment StoreEntitySet="Calendars">
+                <ScalarProperty Name="CalendarId" ColumnName="CalendarId" />
+                <ScalarProperty Name="ExecutionStartDate" ColumnName="ExecutionStartDate" />
+                <ScalarProperty Name="NextExecutionDate" ColumnName="NextExecutionDate" />
+                <ScalarProperty Name="Emails" ColumnName="Emails" />
+                <ScalarProperty Name="IntegrationId" ColumnName="IntegrationId" />
+                <ScalarProperty Name="RecurrenceId" ColumnName="RecurrenceId" />
+                <ScalarProperty Name="ExecutionEndDate" ColumnName="ExecutionEndDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DatabaseParameters">
+            <EntityTypeMapping TypeName="IntegrationToolModel.DatabaseParameter">
+              <MappingFragment StoreEntitySet="DatabaseParameters">
+                <ScalarProperty Name="DatabaseParametersId" ColumnName="DatabaseParametersId" />
+                <ScalarProperty Name="Ip" ColumnName="Ip" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="Instance" ColumnName="Instance" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EngineId" ColumnName="EngineId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Engines">
+            <EntityTypeMapping TypeName="IntegrationToolModel.Engine">
+              <MappingFragment StoreEntitySet="Engines">
+                <ScalarProperty Name="EngineId" ColumnName="EngineId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlatFiles">
+            <EntityTypeMapping TypeName="IntegrationToolModel.FlatFile">
+              <MappingFragment StoreEntitySet="FlatFiles">
+                <ScalarProperty Name="FlatFileId" ColumnName="FlatFileId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlatFilesParameters">
+            <EntityTypeMapping TypeName="IntegrationToolModel.FlatFilesParameter">
+              <MappingFragment StoreEntitySet="FlatFilesParameters">
+                <ScalarProperty Name="FlatFileParameterId" ColumnName="FlatFileParameterId" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IntegrationCategories">
+            <EntityTypeMapping TypeName="IntegrationToolModel.IntegrationCategory">
+              <MappingFragment StoreEntitySet="IntegrationCategories">
+                <ScalarProperty Name="IntegrationCategoryId" ColumnName="IntegrationCategoryId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IntegrationLogs">
+            <EntityTypeMapping TypeName="IntegrationToolModel.IntegrationLog">
+              <MappingFragment StoreEntitySet="IntegrationLogs">
+                <ScalarProperty Name="LogId" ColumnName="LogId" />
+                <ScalarProperty Name="ReferenceCode" ColumnName="ReferenceCode" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="IntegrationId" ColumnName="IntegrationId" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Integrations">
+            <EntityTypeMapping TypeName="IntegrationToolModel.Integration">
+              <MappingFragment StoreEntitySet="Integrations">
+                <ScalarProperty Name="IntegrationId" ColumnName="IntegrationId" />
+                <ScalarProperty Name="IntegrationDate" ColumnName="IntegrationDate" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="WebServiceId" ColumnName="WebServiceId" />
+                <ScalarProperty Name="DatabaseParametersId" ColumnName="DatabaseParametersId" />
+                <ScalarProperty Name="FlatFileId" ColumnName="FlatFileId" />
+                <ScalarProperty Name="FlatFileParameterId" ColumnName="FlatFileParameterId" />
+                <ScalarProperty Name="IntegrationTypeId" ColumnName="IntegrationTypeId" />
+                <ScalarProperty Name="QueryId" ColumnName="QueryId" />
+                <ScalarProperty Name="IntegrationCategoryId" ColumnName="IntegrationCategoryId" />
+                <ScalarProperty Name="CurlParameters" ColumnName="CurlParameters" />
+                <ScalarProperty Name="OperationWebServiceId" ColumnName="OperationWebServiceId" />
+                <ScalarProperty Name="IntegrationName" ColumnName="IntegrationName" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="IntegrationsTypes">
+            <EntityTypeMapping TypeName="IntegrationToolModel.IntegrationsType">
+              <MappingFragment StoreEntitySet="IntegrationsType">
+                <ScalarProperty Name="IntegrationTypeId" ColumnName="IntegrationTypeId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Keys">
+            <EntityTypeMapping TypeName="IntegrationToolModel.Key">
+              <MappingFragment StoreEntitySet="Keys">
+                <ScalarProperty Name="KeyId" ColumnName="KeyId" />
+                <ScalarProperty Name="KeyValue" ColumnName="KeyValue" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OperationsWebServices">
+            <EntityTypeMapping TypeName="IntegrationToolModel.OperationsWebService">
+              <MappingFragment StoreEntitySet="OperationsWebServices">
+                <ScalarProperty Name="OperationWebServiceId" ColumnName="OperationWebServiceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Identifier" ColumnName="Identifier" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PathReports">
+            <EntityTypeMapping TypeName="IntegrationToolModel.PathReport">
+              <MappingFragment StoreEntitySet="PathReports">
+                <ScalarProperty Name="PathReportId" ColumnName="PathReportId" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permissions">
+            <EntityTypeMapping TypeName="IntegrationToolModel.Permission">
+              <MappingFragment StoreEntitySet="Permissions">
+                <ScalarProperty Name="PermissionId" ColumnName="PermissionId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Queries">
+            <EntityTypeMapping TypeName="IntegrationToolModel.Query">
+              <MappingFragment StoreEntitySet="Queries">
+                <ScalarProperty Name="QueryId" ColumnName="QueryId" />
+                <ScalarProperty Name="Query1" ColumnName="Query" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IntegrationTypeId" ColumnName="IntegrationTypeId" />
+                <ScalarProperty Name="QueryName" ColumnName="QueryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="QueryParameters">
+            <EntityTypeMapping TypeName="IntegrationToolModel.QueryParameter">
+              <MappingFragment StoreEntitySet="QueryParameters">
+                <ScalarProperty Name="QueryParameterId" ColumnName="QueryParameterId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="IntegrationId" ColumnName="IntegrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Recurrences">
+            <EntityTypeMapping TypeName="IntegrationToolModel.Recurrence">
+              <MappingFragment StoreEntitySet="Recurrences">
+                <ScalarProperty Name="RecurrenceId" ColumnName="RecurrenceId" />
+                <ScalarProperty Name="NameRecurrence" ColumnName="NameRecurrence" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Resources">
+            <EntityTypeMapping TypeName="IntegrationToolModel.Resource">
+              <MappingFragment StoreEntitySet="Resources">
+                <ScalarProperty Name="ResourceId" ColumnName="ResourceId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServerSMTPParameters">
+            <EntityTypeMapping TypeName="IntegrationToolModel.ServerSMTPParameter">
+              <MappingFragment StoreEntitySet="ServerSMTPParameters">
+                <ScalarProperty Name="ServerSMTPParametersId" ColumnName="ServerSMTPParametersId" />
+                <ScalarProperty Name="NameServerSMTP" ColumnName="NameServerSMTP" />
+                <ScalarProperty Name="Port" ColumnName="Port" />
+                <ScalarProperty Name="UsernameSMTP" ColumnName="UsernameSMTP" />
+                <ScalarProperty Name="PasswordSMTP" ColumnName="PasswordSMTP" />
+                <ScalarProperty Name="EmailFrom" ColumnName="EmailFrom" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="Body" ColumnName="Body" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Status">
+            <EntityTypeMapping TypeName="IntegrationToolModel.Status">
+              <MappingFragment StoreEntitySet="Status">
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="IntegrationToolModel.sysdiagram">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SystemLogs">
+            <EntityTypeMapping TypeName="IntegrationToolModel.SystemLog">
+              <MappingFragment StoreEntitySet="SystemLogs">
+                <ScalarProperty Name="SystemLogId" ColumnName="SystemLogId" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ErrorDate" ColumnName="ErrorDate" />
+                <ScalarProperty Name="IntegrationId" ColumnName="IntegrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="IntegrationToolModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsersTypes">
+            <EntityTypeMapping TypeName="IntegrationToolModel.UsersType">
+              <MappingFragment StoreEntitySet="UsersType">
+                <ScalarProperty Name="UserTypeId" ColumnName="UserTypeId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebServices">
+            <EntityTypeMapping TypeName="IntegrationToolModel.WebService">
+              <MappingFragment StoreEntitySet="WebServices">
+                <ScalarProperty Name="WebServiceId" ColumnName="WebServiceId" />
+                <ScalarProperty Name="Endpoint" ColumnName="Endpoint" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

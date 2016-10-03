@@ -1,0 +1,74 @@
+﻿<div>
+    <br />
+    <feedback type=typeMessage message=message></feedback>
+        
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="col-md-10 col-md-offset-1">
+        <h1>
+          Configuration Web Service
+        </h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-cog"></i> Configuration</li>
+          <li class="breadcrumb-item active"><a href="/#/main/configuration/listWebServices"> List Web Services</a></li>
+          <li ng-if="type == -1" class="breadcrumb-item active"> Create </li>
+          <li ng-if="type != -1" class="breadcrumb-item active"> Update</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-10 col-md-offset-1">
+          <!-- general form elements -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Form</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form name="form" role="form" ng-submit="sendRequest(request, form)" novalidate>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="WSEndpoint">Web Service Endpoint</label>
+                  <input type="text" class="form-control" id="WSEndpoint" name="WSEndpoint" placeholder="Enter Endpoint" ng-model="request.Endpoint" required>
+                  <div ng-if="form.WSEndpoint.$touched || form.$submitted">
+                    <div ng-messages="form.WSEndpoint.$error" role="alert">
+                        <div class="help-block error-text" ng-message="required">* Name Server is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="Username">Usename</label>
+                  <input type="text" class="form-control" id="Username" name="Username" placeholder="Enter Username" ng-model="request.Username" required>
+                  <div ng-if="form.Username.$touched || form.$submitted">
+                    <div ng-messages="form.Username.$error" role="alert">
+                        <div class="help-block error-text" ng-message="required">* Name Server is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="Password">Password</label>
+                  <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter Password" ng-model="request.Password" required>
+                  <div ng-if="form.Password.$touched || form.$submitted">
+                    <div ng-messages="form.Password.$error" role="alert">
+                        <div class="help-block error-text" ng-message="required">* Name Server is required.</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer" ng-controller="AlertController">
+                <button type="button" class="btn btn-primary" sweetalert sweet-options="{{sweet.option}}" sweet-on-confirm="$parent.form.$submitted = true; sendRequest(request, form)" sweet-on-cancel="return">Submit</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+    </section>
+    <!-- /.content -->
+</div>

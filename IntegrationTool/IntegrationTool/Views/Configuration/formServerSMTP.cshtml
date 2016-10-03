@@ -1,0 +1,115 @@
+﻿   <div ngController="ConfigurationServerSMTPController">
+    <br />
+    <feedback type=typeMessage message=message></feedback>
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="col-md-10 col-md-offset-1">
+        <h1>
+          Configuration Server SMTP
+        </h1>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><i class="fa fa-cog"></i> Configuration</li>
+          <li class="breadcrumb-item active"><a href="/#/main/configuration/listServerSMTP"> List Servers SMTP</a></li>
+          <li ng-if="type == -1" class="breadcrumb-item active"> Create </li>
+          <li ng-if="type != -1" class="breadcrumb-item active"> Update</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <!-- left column -->
+        <div class="col-md-10 col-md-offset-1">
+          <!-- general form elements -->
+          <div class="box box-danger">
+            <div class="box-header with-border">
+              <h3 class="box-title">Form</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form name="form" role="form" ng-submit="sendRequest(request, form)" novalidate>
+              <div class="box-body">
+                <div class="form-group">
+                  <label for="NameServerSMTP">Name Server</label>
+                  <input type="text" ng-model="request.NameServerSMTP" class="form-control" id="NameServerSMTP" name="NameServerSMTP" placeholder="Enter Name Server" required>
+                  <div ng-if="form.NameServerSMTP.$touched || form.$submitted">
+                    <div ng-messages="form.NameServerSMTP.$error" role="alert">
+                        <div class="help-block error-text" ng-message="required">* Name Server is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="Port">Port</label>
+                  <input type="text" ng-model="request.Port" class="form-control" id="Port" name="Port" placeholder="Enter Port" ng-pattern="regex" required>
+                  <div ng-if="form.Port.$touched || form.$submitted">
+                    <div ng-messages="form.Port.$error" role="alert">
+                        <div class="help-block error-text" ng-message="required">* Port is required.</div>
+                        <div class="help-block error-text" ng-message="pattern">* Is not a valid port.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="UsernameSMTP">Username</label>
+                  <input type="text" ng-model="request.UsernameSMTP" class="form-control" id="UsernameSMTP" name="UsernameSMTP" placeholder="Enter Username" required>
+                  <div ng-if="form.UsernameSMTP.$touched || form.$submitted">
+                    <div ng-messages="form.UsernameSMTP.$error" role="alert">
+                        <div class="help-block error-text" ng-message="required">* Username is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <label for="PasswordSMTP">Password</label>
+                  <input type="password" ng-model="request.PasswordSMTP" class="form-control" id="PasswordSMTP" name="PasswordSMTP" placeholder="Enter Password" required>
+                  <div ng-if="form.PasswordSMTP.$touched || form.$submitted">
+                    <div ng-messages="form.PasswordSMTP.$error" role="alert">
+                        <div class="help-block error-text" ng-message="required">* Password is required.</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="form-group">
+                    <label>Email From</label>
+                    <input type="text" ng-model="request.EmailFrom" class="form-control" id="EmailFrom" name="EmailFrom" placeholder="Enter Email From" required>
+                    <div ng-if="form.EmailFrom.$touched || form.$submitted">
+                    <div ng-messages="form.EmailFrom.$error" role="alert">
+                        <div class="help-block error-text" ng-message="required">* Email from is required.</div>
+                    </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Subject</label>
+                    <div class="form-group">
+                        <textarea ng-model="request.Subject" id="Subject" name="Subject" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div ng-if="form.Subject.$touched || form.$submitted">
+                        <div ng-messages="form.Subject.$error" role="alert">
+                            <div class="help-block error-text" ng-message="required">* Subject is required.</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Body</label>
+                    <div class="form-group">
+                        <textarea ng-model="request.Body" id="Body" name="Body" class="form-control" rows="3" required></textarea>
+                    </div>
+                    <div ng-if="form.Body.$touched || form.$submitted">
+                        <div ng-messages="form.Body.$error" role="alert">
+                            <div class="help-block error-text" ng-message="required">* Body is required.</div>
+                        </div>
+                    </div>
+                </div>
+              </div>
+              <!-- /.box-body -->
+
+              <div class="box-footer" ng-controller="AlertController">
+                  <button type="button" class="btn btn-primary" sweetalert sweet-options="{{sweet.option}}" sweet-on-confirm="$parent.form.$submitted = true; sendRequest(request, form)" sweet-on-cancel="return">Submit</button>
+              </div>
+            </form>
+          </div>
+          <!-- /.box -->
+        </div>
+      </div>
+    </section>
+   <!-- /.content -->
+  </div>

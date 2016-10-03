@@ -1,0 +1,178 @@
+﻿<!-- Site wrapper -->
+<div class="wrapper">
+
+    <header class="main-header">
+    <!-- Logo -->
+    <a  class="logo">
+        <!-- mini logo for sidebar mini 50x50 pixels -->
+        <span class="logo-mini"><b>I</b>Tool</span>
+        <!-- logo for regular state and mobile devices -->
+        <span class="logo-lg"><b>Integration</b>Tool</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+        <!-- Sidebar toggle button-->
+        <a class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        </a>
+
+        <div class="navbar-custom-menu">
+        <ul class="nav navbar-nav">
+            <!-- User Account: style can be found in dropdown.less -->
+            <li class="dropdown user user-menu">
+            <a class="dropdown-toggle" data-toggle="dropdown">
+                <img src="../../Content/Images/Icon-user.png" class="user-image" alt="User Image">
+                <span class="hidden-xs">{{name}}</span>
+            </a>
+            <ul class="dropdown-menu">
+                <!-- User image -->
+                <li class="user-header">
+                <img src="../../Content/Images/Icon-user.png" class="img-circle" alt="User Image">
+
+                <p>
+                    {{name}}
+                    <small>User Integration Tool</small>
+                </p>
+                </li>
+
+                <!-- Menu Footer-->
+                <li class="user-footer">
+                <div class="pull-left" ng-if="userType == 'Local'">
+                    <a href="/#/main/users/changePassword" class="btn btn-default btn-flat">Change Password</a>
+                </div>
+                <div class="pull-right">
+                    <a ng-click="sendRequest();" class="btn btn-default btn-flat">Sign out</a>
+                </div>
+                </li>
+            </ul>
+            </li>
+            <!-- Control Sidebar Toggle Button -->
+            <li>
+            <a data-toggle="control-sidebar"><i class="fa fa-gears"></i></a>
+            </li>
+        </ul>
+        </div>
+    </nav>
+    </header>
+
+    <!-- =============================================== -->
+
+    <!-- Left side column. contains the sidebar -->
+    <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+        <div class="pull-left image">
+            <img src="../../Content/Images/Icon-user.png" class="img-circle" alt="User Image">
+        </div>
+        <div class="pull-left info">
+            <p>{{name}}</p>
+            <a><i class="fa fa-user text-success"></i>User Integration Tool</a>
+        </div>
+        </div>
+
+        <!-- sidebar menu: : style can be found in sidebar.less -->
+        <ul class="sidebar-menu">
+        <li class="header">Options</li>
+        <li class="treeview">
+            <a href="/#/main/index">
+            <i class="fa fa-dashboard"></i> <span>Main</span>
+            </a>
+        </li>
+        <li class="treeview" ng-if="permissions.indexOf('configuration') >= 0">
+            <a>
+            <i class="fa fa-cog"></i>
+            <span>Configuration</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+            <!--<li><a href="/#/main/configuration/listActiveDirectories"><i class="fa fa-circle-o"></i>Active Directory</a></li>-->
+            <li><a href="/#/main/configuration/listDatabases"><i class="fa fa-database"></i>Databases</a></li>
+            <li><a href="/#/main/configuration/listFlatFiles"><i class="fa fa-file-o"></i>Path Flat Files</a></li>
+            <li><a href="/#/main/configuration/listQueries"><i class="fa fa-server"></i>Queries</a></li>
+            <li><a href="/#/main/configuration/listServerSMTP"><i class="fa fa-envelope"></i>Server SMTP</a></li>
+            <li><a href="/#/main/configuration/listWebServices"><i class="fa fa-cloud-download"></i>Web Services</a></li>
+            <li><a href="/#/main/configuration/listKeys"><i class="fa fa-key"></i>Keys</a></li>
+            <li><a href="/#/main/configuration/listPathReports"><i class="fa fa-file-o"></i>Path Reports</a></li>
+            </ul>
+        </li>
+        <li class="treeview" ng-if="permissions.indexOf('integrations') >= 0">
+            <a>
+            <i class="fa fa-files-o"></i>
+            <span>Integrations</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+            <ul class="treeview-menu">
+            <li><a href="/#/main/integrations/configurationManual/-1"><i class="fa fa-wrench"></i>Configuration Manual</a></li>
+            <li><a href="/#/main/integrations/manual"><i class="fa fa-hand-paper-o"></i>Manual</a></li>
+            <li><a href="/#/main/integrations/configurationScheduled/-1"><i class="fa fa-wrench"></i>Configuration Calendar</a></li>
+            <li><a href="/#/main/integrations/calendar"><i class="fa fa-calendar"></i>Calendar</a></li>
+            </ul>
+        </li>
+        <li ng-if="permissions.indexOf('users') >= 0">
+            <a href="/#/main/users/list">
+            <i class="fa fa-users"></i> <span>Users</span>
+            </a>
+        </li>
+        <li ng-if="permissions.indexOf('reports') >= 0">
+            <a href="/#/main/reports/generate">
+            <i class="fa fa-pie-chart"></i> <span>Reports</span>
+            </a>
+        </li>
+
+        <li class="treeview" ng-if="permissions.indexOf('logs') >= 0">
+            <a>
+            <i class="fa fa-history"></i>
+            <span>Logs</span>
+            <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+            </span>
+            </a>
+                   
+            <ul class="treeview-menu">
+            <li><a href="/#/main/logs/listIntegrationLogs/-1"><i class="fa fa-files-o"></i>Integrations</a></li>
+            <li><a href="/#/main/logs/listSystemLogs/-1"><i class="fa fa-laptop"></i>System</a></li>
+            </ul>
+        </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+    </aside>
+
+    <!-- =============================================== -->
+
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <div ui-view></div>
+    </div>
+    <!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+    <strong>Copyright &copy;<a href="http://lno.laureate.net/"> Laureate Network Office</a>.</strong> All rights
+    reserved.
+    </footer>
+
+    <!-- Control Sidebar -->
+    <aside class="control-sidebar control-sidebar-dark">
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <!-- Home tab content -->
+        <div class="tab-pane" id="control-sidebar-home-tab">
+        </div>
+    </div>
+    </aside>
+    <!-- /.control-sidebar -->
+    <!-- Add the sidebar's background. This div must be placed
+        immediately after the control sidebar -->
+</div>
+<!-- ./wrapper -->
+
+@Scripts.Render("~/Content/JSTemplate")

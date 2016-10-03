@@ -1,0 +1,68 @@
+﻿<div>
+    <br />
+    <feedback type=typeMessage message=message></feedback>
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="col-md-10 col-md-offset-1">
+        <h1>
+            List Path Report
+        </h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-cog"></i> Configuration</li>
+            <li class="breadcrumb-item active"> List Path Reports</li>
+        </ol>
+        </div>
+    </section> 
+    
+    <!-- Main content -->
+    <section class="content">
+      <div class="row">
+        <div class="col-md-10 col-md-offset-1">
+
+
+          <div class="box">
+            <div class="box-header">
+              <h3 class="box-title">Path Report</h3>               
+            </div>
+            <!-- /.box-header -->
+            <div class="box-body table-responsive">
+              <table id="example1" class="table table-bordered table-striped">
+                <thead>
+                <tr>
+                  <th>Location</th>
+                  <th>Options</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="pathReport in listPathReports">
+                  <td>{{pathReport.Location}}</td>                  
+                  <td>
+                    <div ng-controller="AlertController">
+                        <button class="btn btn-xs btn-success" ng-click="editPathReport(pathReport.PathReportId)">Edit</button> 
+                        <button class="btn btn-xs btn-danger" sweetalert sweet-options="{{sweet.option}}" sweet-on-confirm="deletePathReport(pathReport.PathReportId)" sweet-on-cancel="return">Delete</button>
+                    </div>
+                  </td>
+                </tr>
+                </tbody>
+                <tfoot>
+                <tr>
+                  <th>Location</th>                 
+                  <th>Options</th>
+                </tr>
+                </tfoot>
+              </table>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+        </div>
+        <!-- /.col -->
+      </div>
+      <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</div>
+
+
+

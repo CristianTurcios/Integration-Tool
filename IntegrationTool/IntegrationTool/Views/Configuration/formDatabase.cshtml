@@ -1,0 +1,109 @@
+﻿<div>
+    <br />
+    <feedback type=typeMessage message=message></feedback>
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="col-md-10 col-md-offset-1">
+        <h1>
+            Configuration Database
+        </h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-cog"></i> Configuration</li>
+            <li class="breadcrumb-item active"><a href="/#/main/configuration/listDatabases"> List Databases</a></li>
+            <li ng-if="type == -1" class="breadcrumb-item active"> Create </li>
+            <li ng-if="type != -1" class="breadcrumb-item active"> Update</li>
+        </ol>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-10 col-md-offset-1">
+                <!-- general form elements -->
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Form</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form name="form" role="form" ng-submit="sendRequest(request, form)" novalidate>
+                        <div class="box-body">
+                            <div class="form-group">
+                                <label>Database Engine</label>
+                                <select class="form-control select2" name="DBEngine" style="width: 100%;" ng-model="request.EngineId" ng-required="true">
+                                    <option selected disabled value="">Select</option>
+                                    <option ng-repeat="engine in dataBaseEngines" value="{{engine.EngineId}}">{{engine.Name}}</option>
+                                </select>
+                                <div ng-if="form.DBEngine.$touched || form.$submitted">
+                                    <div ng-messages="form.DBEngine.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Engine is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="DBIP">Database IP</label>
+                                <input type="text" class="form-control" id="DBIP" name="DBIP" placeholder="Enter IP" ng-model="request.Ip" ng-pattern="regexIP" ng-required="true">
+                                <div ng-if="form.DBIP.$touched || form.$submitted">
+                                    <div ng-messages="form.DBIP.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* IP is required.</div>
+                                        <div class="help-block error-text" ng-message="pattern">* Is not a valid IP.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="DBPort">Database Port</label>
+                                <input type="text" class="form-control" id="DBPort" name="DBPort" placeholder="Enter Port" ng-model="request.Port" ng-pattern="regexPort">
+                                <div ng-if="form.DBPort.$touched || form.$submitted">
+                                    <div ng-messages="form.DBPort.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="pattern">* Is not a valid port.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="DBInstance">Database Instance</label>
+                                <input type="text" class="form-control" id="DBInstance" name="DBInstance" placeholder="Enter Instance" ng-model="request.Instance">
+                            </div>
+                            <div class="form-group">
+                                <label for="DBName">Database Name</label>
+                                <input type="text" class="form-control" id="DBName" name="DBName" placeholder="Enter Name" ng-model="request.Name" ng-required="true">
+                                <div ng-if="form.DBName.$touched || form.$submitted">
+                                    <div ng-messages="form.DBName.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Database name is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Username">Usename</label>
+                                <input type="text" class="form-control" id="Username" name="Username" placeholder="Enter Username" ng-model="request.Username" ng-required="true">
+                                <div ng-if="form.Username.$touched || form.$submitted">
+                                    <div ng-messages="form.Username.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Username is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="Password">Password</label>
+                                <input type="password" class="form-control" id="Password" name="Password" placeholder="Enter Password" ng-model="request.Password" ng-required="true">
+                                <div ng-if="form.Password.$touched || form.$submitted">
+                                    <div ng-messages="form.Password.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Password is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- /.box-body -->
+
+                        <div class="box-footer" ng-controller="AlertController">
+                            <button type="button" class="btn btn-primary" sweetalert sweet-options="{{sweet.option}}" sweet-on-confirm="$parent.form.$submitted = true; sendRequest(request, form)" sweet-on-cancel="return">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>

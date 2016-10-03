@@ -1,0 +1,231 @@
+﻿<div>
+    <br />
+    <feedback type=typeMessage message=message></feedback>
+
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+        <div class="col-md-12">
+        <h1>
+            Configuration Calendar
+        </h1>
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><i class="fa fa-cog"></i> Integrations</li>
+            <li class="breadcrumb-item active"> Configuration Calendar</li>
+        </ol>
+        </div>
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-danger">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Form</h3>
+                        <button ng-if="type != -1" class="btn btn-xs btn-success pull-right" ng-click="viewSystemLog();">System Log</button> <span class="pull-right"> &nbsp </span>
+                        <button ng-if="type != -1" class="btn btn-xs btn-warning pull-right" ng-click="viewIntegrationLog();">Integration Log</button>
+                    </div>
+                    <!-- /.box-header -->
+                    <!-- form start -->
+                    <form name="form" role="form" ng-submit="sendRequest(request, form)" novalidate>
+                        <div class="box-body">
+
+                            <div class="form-group">
+                                <label>Integration Name</label>
+                                <input ng-model="request.IntegrationName" type="text" class="form-control" id="IntegrationName" name="IntegrationName" placeholder="Enter Integration Name" ng-required="true">
+                                <div ng-if="form.IntegrationName.$touched || form.$submitted">
+                                    <div ng-messages="form.IntegrationName.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Integration Name is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Integration Status</label>
+                                <select class="form-control select" name="StatusId" style="width: 100%;" ng-model="request.StatusId" ng-required="true">
+                                    <option selected disabled value="">Select</option>
+                                    <option ng-repeat="st in status" value="{{st.StatusId}}">{{st.Name}}</option>
+                                </select>
+                                <div ng-if="form.StatusId.$touched || form.$submitted">
+                                    <div ng-messages="form.StatusId.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Status is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Integration Type</label>
+                                <select class="form-control select" name="IntegrationTypeId" style="width: 100%;" ng-model="request.IntegrationTypeId" ng-change="getQueries(request.IntegrationTypeId)" ng-required="true">
+                                    <option selected disabled value="">Select</option>
+                                    <option ng-repeat="integrationType in integrationsType" value="{{integrationType.IntegrationTypeId}}">{{integrationType.Name}}</option>
+                                </select>
+                                <div ng-if="form.IntegrationTypeId.$touched || form.$submitted">
+                                    <div ng-messages="form.IntegrationTypeId.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Integration type is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Web Service</label>
+                                <select class="form-control select" name="WebServiceId" style="width: 100%;" ng-model="request.WebServiceId" ng-required="true">
+                                    <option selected disabled value="">Select</option>
+                                    <option ng-repeat="webService in webServices" value="{{webService.WebServiceId}}">{{webService.Endpoint}}</option>
+                                </select>
+                                <div ng-if="form.WebServiceId.$touched || form.$submitted">
+                                    <div ng-messages="form.WebServiceId.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Web service is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Operation Web Service</label>
+                                <select class="form-control select" name="OperationWebServiceId" style="width: 100%;" ng-model="request.OperationWebServiceId" ng-required="true">
+                                    <option selected disabled value="">Select</option>
+                                    <option ng-repeat="operation in operationsWebServices" value="{{operation.OperationWebServiceId}}">{{operation.Name}}</option>
+                                </select>
+                                <div ng-if="form.OperationWebServiceId.$touched || form.$submitted">
+                                    <div ng-messages="form.OperationWebServiceId.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Operation is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Database</label>
+                                <select class="form-control select" name="DatabaseParametersId" style="width: 100%;" ng-model="request.DatabaseParametersId" ng-change="getDatabase(request.DatabaseParametersId)" ng-required="true">
+                                    <option selected disabled value="">Select</option>
+                                    <option ng-repeat="database in databases" value="{{database.DatabaseParametersId}}">{{database.Name}}</option>
+                                </select>
+                                <div ng-if="form.DatabaseParametersId.$touched || form.$submitted">
+                                    <div ng-messages="form.DatabaseParametersId.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Database is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div ng-hide="request.DatabaseParametersId == null" class="form-group">
+                                <div class="col-md-12">
+                                    <label>Description Database</label>
+                                    <div class="form-group">
+                                        <textarea class="form-control" rows="4" required disabled>
+                                        NAME: {{database.Name}}
+                                        IP: {{database.Ip}}
+                                        PORT: {{database.Port}}
+                                        INSTANCE: {{database.Instance}}</textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Path Flat File</label>
+                                <select class="form-control select" name="FlatFileParameterId" style="width: 100%;" ng-model="request.FlatFileParameterId" ng-required="true">
+                                    <option selected disabled value="">Select</option>
+                                    <option ng-repeat="flatFile in flatFiles" value="{{flatFile.FlatFileParameterId}}">{{flatFile.Location}}</option>
+                                </select>
+                                <div ng-if="form.FlatFileParameterId.$touched || form.$submitted">
+                                    <div ng-messages="form.FlatFileParameterId.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Flat file is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Curl Parameters</label>
+                                <input ng-model="request.CurlParameters" type="text" class="form-control" id="CurlParameters" name="CurlParameters" placeholder="Enter param">
+                                <div class="help-block">* Example: -k -O</div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Query</label>
+                                <select class="form-control select" name="QueryId" style="width: 100%;" ng-model="request.QueryId" ng-change="getQuery(request.QueryId);" ng-required="true">
+                                    <option selected disabled value="">Select</option>
+                                    <option ng-repeat="query in queries" value="{{query.QueryId}}">{{query.QueryName}}</option>
+                                </select>
+                                <div ng-if="form.QueryId.$touched || form.$submitted">
+                                    <div ng-messages="form.QueryId.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Query is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div ng-hide="query == null" class="form-group">
+                                <div class="col-md-6">
+                                    <label for="Description">Description </label>
+                                    <div class="form-group">
+                                        <textarea name="Description" ng-model="query.Description" id="Description" class="form-control" rows="5" required disabled></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <label for="Query">Query </label>
+                                    <div class="form-group">
+                                        <textarea name="Query" ng-model="query.Query1" id="Query" class="form-control" rows="5" required disabled></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                            <div ng-repeat="param in params" class="form-group">
+                                <label for="param">{{param.nameParam}}</label>
+                                <input ng-model="request[param.nameParam]" type="text" class="form-control" id="{{param.nameParam}}" name="{{param.nameParam}}" placeholder="Enter param" ng-required="true">
+                                <div class="help-block">* Example if it isn't a parameter list: parameter1|parameter2|parameter3 </div>
+                                <div class="help-block">* Example if it is a parameter list: parameter </div>
+                                <div ng-if="form[param.nameParam].$touched || form.$submitted">
+                                    <div ng-messages="form[param.nameParam].$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* {{param.nameParam}} is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Execution Start Date</label>
+                                <input ng-model="request.ExecutionStartDate" type="datetime-local" class="form-control" id="ExecutionStartDate" name="ExecutionStartDate" ng-required="true">
+                                <div ng-if="form.ExecutionStartDate.$touched || form.$submitted">
+                                    <div ng-messages="form.ExecutionStartDate.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Execution start date is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Execution End Date</label>
+                                <input ng-model="request.ExecutionEndDate" type="datetime-local" class="form-control" id="ExecutionEndDate" name="ExecutionEndDate" ng-required="true">
+                                <div ng-if="form.ExecutionEndDate.$touched || form.$submitted">
+                                    <div ng-messages="form.ExecutionEndDate.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Execution end date is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Recurrence</label>
+                                <select class="form-control select" name="RecurrenceId" style="width: 100%;" ng-model="request.RecurrenceId" ng-required="true">
+                                    <option selected disabled value="">Select</option>
+                                    <option ng-repeat="recurrence in recurrences" value="{{recurrence.RecurrenceId}}">{{recurrence.NameRecurrence}}</option>
+                                </select>
+                                <div ng-if="form.RecurrenceId.$touched || form.$submitted">
+                                    <div ng-messages="form.RecurrenceId.$error" role="alert">
+                                        <div class="help-block error-text" ng-message="required">* Recurrence is required.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Emails</label>
+                                <input ng-model="request.Emails" type="text" class="form-control" id="Emails" name="Emails" placeholder="Enter Emails">
+                                <div class="help-block">* Example: user@domain, user2@domain, user3@domain </div>
+                            </div>
+                        <!-- /.box-body -->
+
+                        <div class="box-footer" ng-controller="AlertController">
+                            <button type="button" class="btn btn-primary" sweetalert sweet-options="{{sweet.option}}" sweet-on-confirm="$parent.form.$submitted = true; sendRequest(request, form)" sweet-on-cancel="return">Submit</button>
+                        </div>
+                    </form>
+                </div>
+                <!-- /.box -->
+            </div>
+        </div>
+    </section>
+    <!-- /.content -->
+</div>
