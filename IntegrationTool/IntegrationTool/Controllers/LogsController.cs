@@ -10,6 +10,8 @@ using System.Diagnostics;
 using System.IO;
 using System.Xml;
 using System.Text.RegularExpressions;
+using System.Net;
+using System.Text;
 
 namespace IntegrationTool.Controllers
 {
@@ -57,7 +59,7 @@ namespace IntegrationTool.Controllers
             }
             catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the Integration Logs"+e.Message+". Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -85,9 +87,9 @@ namespace IntegrationTool.Controllers
                         ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                     });
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the System Logs. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -117,44 +119,44 @@ namespace IntegrationTool.Controllers
                 password = encrypt.decryptData(logsConfigurationModel.getWebServicePassword(integrationId));
                 endPoint = encrypt.decryptData(logsConfigurationModel.getWebServiceEndPoint(integrationId));
                 path = encrypt.decryptData(logsConfigurationModel.getPath(integrationId)) + "/details.xml";
-
-                //curl = "curl -w '%{http_code}' -u " + user + ":" + password + " --url " + endPoint + "dataSetStatus/" + referenceCode;
-                 curl = "curl -w '%{http_code}' -u e2ba3a85-24f2-4b30-aab3-a90b978090ca:eUc*13P --url https://eud-eval.blackboard.com/webapps/bb-data-integration-flatfile-BBLEARN/endpoint/dataSetStatus/eebda8337f0c49f3a81b2e0bc6892adb";
-
-                System.Diagnostics.ProcessStartInfo procStartInfo = new System.Diagnostics.ProcessStartInfo("cmd", "/c " + curl);
-                procStartInfo.CreateNoWindow = true;
-                procStartInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                procStartInfo.UseShellExecute = false;
-                procStartInfo.RedirectStandardOutput = true;
-                System.Diagnostics.Process proc = new System.Diagnostics.Process();
-                proc.StartInfo = procStartInfo;
-                proc.Start();
-
-                proc.WaitForExit();
-                
-                string respProc = proc.StandardOutput.ReadToEnd();
-
-                Regex regex = new Regex(@"'200'");
-                Match match = regex.Match(respProc);
-
-                if (match.Success)
-                {
-                    respProc = respProc.Remove(respProc.IndexOf("'200'"));
-
-                    XmlDocument doc = new XmlDocument();
-                    doc.LoadXml(respProc);
-
-                    resp = JsonConvert.SerializeXmlNode(doc);
-                }
-                else
-                {
-                    resp = "{\"type\":\"danger\", \"message\":\"Error connecting to web service. Please try again.\"}";
-                }
             }
             catch(Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + "\"}";
-                // resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the details. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
+                response(resp);
+                return;
+            }
+
+            /*
+            string url = "https://eud-eval.blackboard.com/webapps/bb-data-integration-flatfile-BBLEARN/endpoint/dataSetStatus/eebda8337f0c49f3a81b2e0bc6892adb";
+            string userAndPassword = "e2ba3a85-24f2-4b30-aab3-a90b978090ca:eUc*13P";
+            */
+
+            string url = endPoint + "dataSetStatus/" + referenceCode;
+            string userAndPassword = user + ":" + password;
+
+            HttpWebRequest myReq = (HttpWebRequest)WebRequest.Create(url);
+            myReq.Method = "POST";
+            myReq.ContentType = "text/plain; charset=UTF-8";
+
+            UTF8Encoding enc = new UTF8Encoding();
+            myReq.Headers.Add("Authorization", "Basic " + Convert.ToBase64String(enc.GetBytes(userAndPassword)));
+
+            try
+            {
+                HttpWebResponse wr = (HttpWebResponse)myReq.GetResponse();
+                Stream receiveStream = wr.GetResponseStream();
+                StreamReader reader = new StreamReader(receiveStream, Encoding.UTF8);
+                string responseWebService = reader.ReadToEnd();
+
+                XmlDocument doc = new XmlDocument();
+                doc.LoadXml(responseWebService);
+
+                resp = JsonConvert.SerializeXmlNode(doc);
+            }
+            catch (WebException e)
+            {
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);

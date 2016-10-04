@@ -17,11 +17,13 @@ namespace ClassLibrary
         private ReadFile readFile = new ReadFile();
         private Encrypt decrypt = new Encrypt();
         private Curl curl = new Curl();
+        private CallWebServices callWebServices = new CallWebServices();
         private WriteFileController writeFileController = new WriteFileController();
         private string emails = "";
         private string location = "";
         string pathLog = "";
         public int integrationId = 0;
+        private string queryStatus = "";
 
         public Integration(string server = "172.20.33.13", string databaseName = "IntegrationTool", string userId = "SISUser", string password = "test2016!")
         {
@@ -45,7 +47,7 @@ namespace ClassLibrary
             }
             catch (System.Data.SqlClient.SqlException e)
             {
-                Console.WriteLine(e.Message);
+                throw new ArgumentException(e.Message);
             }    
         }
 
@@ -58,7 +60,7 @@ namespace ClassLibrary
             }
             catch (System.Data.SqlClient.SqlException e)
             {
-                Console.WriteLine(e.Message);
+                throw new ArgumentException(e.Message);
             }  
         }      
 
@@ -76,7 +78,7 @@ namespace ClassLibrary
             }
             catch (System.Data.SqlClient.SqlException e)
             {
-                Console.WriteLine(e.Message);
+                throw new ArgumentException(e.Message);
             }
      
             return table;
@@ -106,7 +108,9 @@ namespace ClassLibrary
             parseWebServicesResult(webServicesParameters, splitNameAndFullPath[0]);
             insertNameFile(splitNameAndFullPath[1]);
             Thread.Sleep(2000);
-            insertLog(readFile.Read(pathLog, integrationId,this));
+            //insertLog(readFile.Read(pathLog, integrationId,this));
+            insertLog(queryStatus);
+           
         }
 
         //7
@@ -220,17 +224,21 @@ namespace ClassLibrary
         {
             string[] webServices = webServicesParameters.Split('|');
 
-            pathLog = location + "/LogIntegration.txt";
-            string curlCommand = "curl -w '%{http_code}' -H Content-Type:text/plain --data-binary @" + fullPath + " -u " + webServices[4] + ":" + webServices[3] + " --url " + webServices[0] + webServices[1] + "/" + webServices[2] + "> " + pathLog;
+            string URLwebServices = webServices[0] + webServices[1] + "/" + webServices[2];
+            string UsernameAndPassword = webServices[4] + ":" + webServices[3];
+           
+            //pathLog = location + "/LogIntegration.txt";
+            //string curlCommand = "curl -w '%{http_code}' -H Content-Type:text/plain --data-binary @" + fullPath + " -u " + webServices[4] + ":" + webServices[3] + " --url " + webServices[0] + webServices[1] + "/" + webServices[2] + "> " + pathLog;         
+            queryStatus = callWebServices.webServicesCall(URLwebServices, UsernameAndPassword,fullPath, this);
 
-            Console.WriteLine(curlCommand);
-            curl.IntegrationWithCurl(curlCommand,this);
+            //Console.WriteLine(curlCommand);
+            //curl.IntegrationWithCurl(curlCommand,this);
             Thread.Sleep(1000);
-            sendEmail(fullPath,pathLog);
+            sendEmail(fullPath);
         }
 
         //12
-        private void sendEmail(string Attachment,string pathLog)
+        private void sendEmail(string Attachment)
         {          
             if (!(string.IsNullOrEmpty(emails)))
             {
@@ -241,7 +249,7 @@ namespace ClassLibrary
 
                 email.sendMail(decrypt.decryptData(Convert.ToString(table.Rows[0]["UsernameSMTP"])), decrypt.decryptData(Convert.ToString(table.Rows[0]["PasswordSMTP"])), decrypt.decryptData(Convert.ToString(table.Rows[0]["NameServerSMTP"])),
                                decrypt.decryptData(Convert.ToString(table.Rows[0]["Port"])), decrypt.decryptData(Convert.ToString(table.Rows[0]["EmailFrom"])), emails, decrypt.decryptData(Convert.ToString(table.Rows[0]["Subject"])),
-                               decrypt.decryptData(Convert.ToString(table.Rows[0]["Body"])), Attachment,pathLog,this);
+                               decrypt.decryptData(Convert.ToString(table.Rows[0]["Body"])), Attachment,/*pathLog,*/this);
             }
         }
 
@@ -277,18 +285,22 @@ namespace ClassLibrary
         {
             OpenConnection();
             SqlCommand sqlCommand = new SqlCommand(query, connection);
-            //try
-            //{
-              sqlCommand.ExecuteNonQuery();
-            //}
-           /* catch (System.Data.SqlClient.SqlException e)
+            try
             {
-                Console.WriteLine(e.Message);
+              sqlCommand.ExecuteNonQuery();
+            }
+            catch (System.Data.SqlClient.SqlException e)
+            {
+                throw new ArgumentException(e.Message );
             }
             catch (System.ArgumentException e)
             {
-                Console.WriteLine(e.Message);
-            }*/
+                throw new ArgumentException(e.Message);
+            }
+            catch (System.InvalidOperationException e)
+            {
+                throw new ArgumentException(e.Message);
+            }
                     
             CloseConnection();
         }       

@@ -34,7 +34,9 @@ namespace ClassLibrary
                 string message = e.Message;
                 message = message.Replace("'","");
                 string query = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class WriteFile: " + message + "','" + DateTime.Now + "'," + integration.integrationId + ")";             
-                integration.insertLog(query);              
+                integration.insertLog(query);
+
+                throw new DirectoryNotFoundException(e.Message);
             }
         
             return path+"|"+nameFile;

@@ -138,9 +138,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration Active Directory Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration Active Directory Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration Active Directory Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
             
 
@@ -161,9 +161,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration Server SMTP Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration Server SMTP Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration Server SMTP Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -188,10 +188,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration DataBase Successful.\"}";
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"" + ex.Message + "\"}";
-                // resp = "{\"type\":\"danger\", \"message\":\"Configuration DataBase Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration DataBase Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -209,9 +208,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration Web Service Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration Web Service Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration Web Service Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -228,9 +227,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration Flat File Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration Flat File Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration Flat File Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -247,9 +246,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration Path Report Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration Path Report Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration Path Report Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -266,9 +265,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration Query Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration Query Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration Query Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -290,9 +289,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration Active Directory Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration Active Directory Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration Active Directory Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
 
@@ -317,9 +316,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration Server SMTP Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration Server SMTP Unsuccessful. Please try again.\"}";
+               resp = "{\"type\":\"danger\", \"message\":\"Configuration Server SMTP Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -343,9 +342,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration DataBase Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration DataBase Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration DataBase Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -365,9 +364,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration Web Service Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration Web Service Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration Web Service Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -385,9 +384,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration Flat File Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration Flat File Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration Flat File Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -405,9 +404,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration Path Report Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration Path Report Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration Path Report Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -428,9 +427,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Configuration Query Successful.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Configuration Query Unsuccessful. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Configuration Query Unsuccessful. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -450,9 +449,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(engines);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the engines. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the engines. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -469,9 +468,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(integrationsType);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the type queries. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the type queries. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -495,9 +494,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(queries);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the queries. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the queries. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -520,9 +519,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(activeDirectories);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the active directories. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the active directories. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -544,9 +543,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(flatFiles);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the flat files. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the flat files. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -568,9 +567,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(pathReports);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the path Report. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the path Report. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -598,9 +597,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(serverSMTP);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the servers SMTP. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the servers SMTP. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -628,9 +627,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(databases);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the databases. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the databases. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -654,9 +653,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(webServices);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the web services. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the web services. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -673,9 +672,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(keys);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the keys. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the keys. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -695,9 +694,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(activeDirectory);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the active directory. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the active directory. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -721,9 +720,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(database);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the database. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the database. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -742,9 +741,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(flatFile);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the flat file. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the flat file. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -763,9 +762,9 @@ namespace IntegrationTool.Controllers
 
                  resp = serializeObject(pathReport);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the Path Report. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the Path Report. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -786,9 +785,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(query);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the query. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the query. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -813,9 +812,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(serverSMTP);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the server SMTP. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the server SMTP. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -836,9 +835,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(webService);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the web service. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the web service. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -859,10 +858,9 @@ namespace IntegrationTool.Controllers
                 resp = "{\"type\":\"success\", \"message\":\"Active directory deleted Successfully.\"}";
 
             }
-            catch (Exception ex)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"" + ex.Message + "\"}";
-                // resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the active directory. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the active directory. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -880,9 +878,9 @@ namespace IntegrationTool.Controllers
                 resp = "{\"type\":\"success\", \"message\":\"Database deleted Successfully.\"}";
 
             }
-            catch (Exception )
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the database. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the database. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -900,9 +898,9 @@ namespace IntegrationTool.Controllers
                 resp = "{\"type\":\"success\", \"message\":\"Flat file deleted Successfully.\"}";
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the flat file. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the flat file. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -920,9 +918,9 @@ namespace IntegrationTool.Controllers
                 resp = "{\"type\":\"success\", \"message\":\"Path Report deleted Successfully.\"}";
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the Path Report. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the Path Report. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -940,9 +938,9 @@ namespace IntegrationTool.Controllers
                 resp = "{\"type\":\"success\", \"message\":\"Query deleted Successfully.\"}";
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the query. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the query. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -960,9 +958,9 @@ namespace IntegrationTool.Controllers
                 resp = "{\"type\":\"success\", \"message\":\"Server SMTP deleted Successfully.\"}";
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the server SMTP. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the server SMTP. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);
@@ -980,9 +978,9 @@ namespace IntegrationTool.Controllers
                 resp = "{\"type\":\"success\", \"message\":\"Web service deleted Successfully.\"}";
 
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the web service. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Can not be deleted the web service. Error: " + e.Message + ". Please try again.\"}";
             }
 
             response(resp);

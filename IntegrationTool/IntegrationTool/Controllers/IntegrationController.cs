@@ -72,9 +72,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Integration successful stored.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Integration unsuccessful stored. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
 
@@ -114,9 +114,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Integration successful stored.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Integration unsuccessful stored. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
 
@@ -160,9 +160,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"Integration successful updated.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Integration unsuccessful updated. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
 
@@ -190,9 +190,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(queries);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the queries. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -209,9 +209,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(operations);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the operations web services. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -228,9 +228,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(integrationCategories);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the integration categories. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -247,9 +247,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(recurrences);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the recurrences. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -266,9 +266,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(integrations);
             }
-            catch (Exception)
-            {              
-               resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the schedule integration. Please try again.\"}";
+            catch (Exception e)
+            {
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -363,9 +363,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(integrations);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the manual integration. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -382,9 +382,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(integration);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the integration selected. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -401,9 +401,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(status);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the integration selected. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -414,13 +414,13 @@ namespace IntegrationTool.Controllers
         {
             string resp = "";
             try
-            {
+            {              
                 executeIntegrationManual(id);
                 resp = "{\"type\":\"success\", \"message\":\"Integration successful executed.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the integration selected. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"Error occurred in: "+e.TargetSite+". Please try again.\"}";
             }
 
             response(resp);

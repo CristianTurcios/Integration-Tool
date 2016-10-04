@@ -9,7 +9,7 @@ namespace ClassLibrary
 {
     class ReadFile
     {
-        public string Read(string pathLog,int integrationId,Integration integration)
+        /*public string Read(string pathLog,int integrationId,Integration integration)
         {
             try
             {
@@ -42,7 +42,15 @@ namespace ClassLibrary
                 string queryToLog = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class SqlServer: " + message + "','" + DateTime.Now + "'," + integration.integrationId + ")";
                 integration.insertLog(queryToLog);
                 return "";
-            }                  
+            }
+            catch (System.ArgumentException e)
+            {
+                string message = e.Message;
+                message = message.Replace("'", "");
+                string queryToLog = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class SqlServer: " + message + "','" + DateTime.Now + "'," + integration.integrationId + ")";
+                integration.insertLog(queryToLog);
+                return "";
+            }
         }
 
         private static string ReturnSuccessStatus(int integrationId, StreamReader file, string[] ContentFile)
@@ -68,6 +76,6 @@ namespace ClassLibrary
 
             file.Close();
             return query;
-        }    
+        }*/    
     }
 }

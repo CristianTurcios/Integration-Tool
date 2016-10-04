@@ -63,9 +63,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(users);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the users. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -84,9 +84,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(user);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the user. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -108,9 +108,9 @@ namespace IntegrationTool.Controllers
                 else
                     resp = serializeObject(user);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be find the user. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -127,9 +127,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(userTypes);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the user types. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -146,9 +146,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(resources);
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the resources. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -170,9 +170,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"User created succesfully..\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be created the user. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -196,9 +196,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"User updated succesfully.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be updated the user. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
             response(resp);
         }
@@ -217,9 +217,9 @@ namespace IntegrationTool.Controllers
                 else
                     resp = "{\"type\":\"danger\", \"message\":\"Password incorrect.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be changed the password. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
             response(resp);
         }
@@ -239,9 +239,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"User disable successfully.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be disable user. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -258,9 +258,9 @@ namespace IntegrationTool.Controllers
 
                 resp = "{\"type\":\"success\", \"message\":\"User enable successfully.\"}";
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be enable user. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);

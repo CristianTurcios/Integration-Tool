@@ -1,0 +1,5 @@
+C:\Users\cturcios\Desktop\IntegrationTool\ClassLibrary\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe.config
+C:\Users\cturcios\Desktop\IntegrationTool\ClassLibrary\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.exe
+C:\Users\cturcios\Desktop\IntegrationTool\ClassLibrary\ConsoleApplication1\ConsoleApplication1\bin\Debug\ConsoleApplication1.pdb
+C:\Users\cturcios\Desktop\IntegrationTool\ClassLibrary\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.exe
+C:\Users\cturcios\Desktop\IntegrationTool\ClassLibrary\ConsoleApplication1\ConsoleApplication1\obj\Debug\ConsoleApplication1.pdb

@@ -69,9 +69,7 @@ namespace IntegrationTool.Controllers
         public void Logout()
         {
             FormsAuthentication.SignOut();
-
-            string resp = "{\"type\":\"danger\", \"message\":\"Logout succesfully.\"}";
-
+            string resp = "{}";
             response(resp);
         }
 

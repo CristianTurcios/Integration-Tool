@@ -60,7 +60,9 @@ namespace ClassLibrary
                 string message = e.Message;
                 message = message.Replace("'", "");
                 string query = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class Mysql: " + message + "','" + DateTime.Now + "'," + this.integration.integrationId + ")";
-                integration.insertLog(query);    
+                integration.insertLog(query);
+
+                throw new ArgumentException(e.Message);
             }           
         }
 
@@ -75,7 +77,9 @@ namespace ClassLibrary
                 string message = e.Message;
                 message = message.Replace("'", "");
                 string queryToLog2 = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class MySql: " + message + "','" + DateTime.Now + "'," + this.integration.integrationId + ")";
-                integration.insertLog(queryToLog2);    
+                integration.insertLog(queryToLog2);
+
+                throw new ArgumentException(e.Message);
             }              
         }
 
@@ -102,7 +106,9 @@ namespace ClassLibrary
                 string message = e.Message;
                 message = message.Replace("'", "");
                 string queryToLog = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class MySql: " + message + "','" + DateTime.Now + "'," + this.integration.integrationId + ")";
-                integration.insertLog(queryToLog); 
+                integration.insertLog(queryToLog);
+
+                throw new ArgumentException(e.Message);
             }
                   
             //closeConnection();

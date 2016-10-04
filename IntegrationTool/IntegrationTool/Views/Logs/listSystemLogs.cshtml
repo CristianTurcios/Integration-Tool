@@ -23,7 +23,13 @@
 
           <div class="box">
             <div class="box-header">
-              <h3 class="box-title">System Logs</h3>                
+              <h3 class="box-title">System Logs</h3>      
+                
+               <div class="pull-right">
+                <div class="form-group">
+                   <input ng-model="Search" type="text" class="form-control input-sm" placeholder="Search..." >                               
+                </div>
+               </div>          
             </div>
             <!-- /.box-header -->
             <div class="box-body table-responsive">
@@ -37,10 +43,10 @@
                 </thead>
                 <tbody>
 
-                <tr ng-repeat="systemLogs in listSystemLogs">
+                <tr ng-repeat="systemLogs in listSystemLogs | filter : Search">
                   <td>{{systemLogs.Description}}</td>
                   <td>{{systemLogs.Integration.IntegrationName}}</td>                  
-                  <td>{{systemLogs.ErrorDate}}</td>                
+                  <td>{{systemLogs.ErrorDate | date:'medium'}}</td>                
                 </tr>
                 </tbody>
                 <tfoot>

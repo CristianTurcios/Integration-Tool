@@ -67,7 +67,7 @@ namespace IntegrationTool.Controllers
             }
             catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the Manual Integrations" + e.Message + ". Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -91,7 +91,7 @@ namespace IntegrationTool.Controllers
             }
             catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the Automatic Integration" + e.Message + ". Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -115,7 +115,7 @@ namespace IntegrationTool.Controllers
             }
             catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the Local Users" + e.Message + ". Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -139,7 +139,7 @@ namespace IntegrationTool.Controllers
             }
             catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the Active Directory" + e.Message + ". Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);

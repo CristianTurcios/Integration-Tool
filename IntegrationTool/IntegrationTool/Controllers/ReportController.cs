@@ -61,9 +61,9 @@ namespace IntegrationTool.Controllers
                         ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                     });
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the Integration Category. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -85,9 +85,9 @@ namespace IntegrationTool.Controllers
                         ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                     });
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the Integration Category. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -109,9 +109,9 @@ namespace IntegrationTool.Controllers
                         ReferenceLoopHandling = ReferenceLoopHandling.Ignore
                     });
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the Integration Category. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -134,9 +134,9 @@ namespace IntegrationTool.Controllers
 
                 resp = serializeObject(databaseParameter);            
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Can not be loaded the Integration Category. Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);
@@ -163,18 +163,16 @@ namespace IntegrationTool.Controllers
                      
             try
             {
+                 DeterminateDateIsNullOrNot(reportGenerate, table);                                    
              
-             DeterminateDateIsNullOrNot(reportGenerate, table);                                    
-             
-             resp = "{\"type\":\"success\", \"message\":\"Report Generate " + Request.Form["Report"] + " Successful.\"}";
+                 resp = "{\"type\":\"success\", \"message\":\"Report Generate " + Request.Form["Report"] + " Successful.\"}";
             }
-            catch (Exception ex)
-            {              
-                resp = "{\"type\":\"danger\", \"message\":\"Report Generate "+ex.Message+" Unsuccessful. Please try again.\"}";
+            catch (Exception e)
+            {
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
               
             }
             //response(resp);
-            
         }
 
         private void DeterminateDateIsNullOrNot(ReportsGenerate reportGenerate, DataTable table)

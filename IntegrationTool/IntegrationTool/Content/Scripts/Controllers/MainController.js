@@ -37,7 +37,7 @@
             var countIntegration = resp[index].ItemArray[0];
             var MesIntegration = resp[index].ItemArray[1];
 
-            $scope.ArrayIntegrationManual[MesIntegration] = countIntegration;
+            $scope.ArrayIntegrationManual[MesIntegration-1] = countIntegration;
         }
 
         ReadInfoFromDatabaseForAutomaticIntegrations();
@@ -69,7 +69,7 @@
             var countIntegration = resp[index].ItemArray[0];
             var MesIntegration = resp[index].ItemArray[1];
 
-            $scope.ArrayIntegrationAutomatic[MesIntegration] = countIntegration;
+            $scope.ArrayIntegrationAutomatic[MesIntegration-1] = countIntegration;
         }
 
         ReadInfoFromDatabaseForLocalUsers();
