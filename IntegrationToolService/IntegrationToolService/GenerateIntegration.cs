@@ -190,7 +190,7 @@ namespace IntegrationToolService
         //3.2
         private static bool compareDatetime(DateTime datetimeNow, DateTime TimeExecutionDate)
         {
-            return datetimeNow.ToString("yyyy-MM-dd-HH").Equals(TimeExecutionDate.ToString("yyyy-MM-dd-HH"));
+            return datetimeNow.ToString("yyyy-MM-dd-HH-mm").Equals(TimeExecutionDate.ToString("yyyy-MM-dd-HH-mm"));
         }
 
         //4

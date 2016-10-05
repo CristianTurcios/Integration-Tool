@@ -301,7 +301,7 @@ namespace IntegrationTool.Controllers
             GenerateHeaders(aTable, headers, "Type Integration");
             GenerateHeaders(aTable, headers, "Operation Web Services");
             GenerateHeaders(aTable, headers, "Database Name");
-            GenerateHeaders(aTable, headers, "Date Create Integration");
+            GenerateHeaders(aTable, headers, "Execution Date");
           
             for (int i = 0; i < table.Rows.Count; i++)
             {

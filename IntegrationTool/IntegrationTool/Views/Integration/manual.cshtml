@@ -1,11 +1,8 @@
 ﻿<div>
     <br />
     <feedback type=typeMessage message=message></feedback>
-
     <div ng-show="isloading" id="Preloader"></div>
     <div ng-if="!isloading">
-
-            <!-- Content Header (Page header) -->
         <section class="content-header">
             <div class="col-md-12">
             <h1>
@@ -17,8 +14,6 @@
             </ol>
             </div>
         </section>
-    
-        <!-- Main content -->
         <section class="content">
           <div class="row">
             <div class="col-md-12">
@@ -27,18 +22,24 @@
                     <div class="col-md-3 ">
                         <h3 class="box-title">Manual Integrations</h3>
                     </div>
-
-                     <a href="/#/Integration/configuration/-1" class="pull-right btn btn-xs btn-success">Add Integration</a>
-
-                    <span class="pull-right">&nbsp</span>
-
-                    <div class="pull-right">
-                       <div class="form-group">
-                      <input ng-model="Search" type="text" class="form-control input-sm" placeholder="Search..." >                               
-                     </div>
+                    <a href="/#/main/integrations/configurationManual/-1" class="pull-right btn btn-xs btn-success">Add Integration</a>
+                    <br />
+                    <br />
+                    <div class="col-md-3">
+                      <div class="search-paginate">
+                        <input ng-model="search" ng-change="methodSearch(search)" type="text" class="form-control input-sm" placeholder="Search For Integration Name" >                               
+                        <ul class="pagination">
+                            <li ng-if="groupOfPages != 0"><a ng-click="prevGroupOfPages()" class="fa fa-angle-left"></a></li>
+                            <li ng-if="1 + groupOfPages * 5 <= numberOfPages" ng-class="page == 0 ? 'active' : ''"><a ng-click="manageIntegrations(0)">{{1 + groupOfPages * 5}}</a></li>
+                            <li ng-if="2 + groupOfPages * 5 <= numberOfPages" ng-class="page == 1 ? 'active' : ''"><a ng-click="manageIntegrations(1)">{{2 + groupOfPages * 5}}</a></li>
+                            <li ng-if="3 + groupOfPages * 5 <= numberOfPages" ng-class="page == 2 ? 'active' : ''"><a ng-click="manageIntegrations(2)">{{3 + groupOfPages * 5}}</a></li>
+                            <li ng-if="4 + groupOfPages * 5 <= numberOfPages" ng-class="page == 3 ? 'active' : ''"><a ng-click="manageIntegrations(3)">{{4 + groupOfPages * 5}}</a></li>
+                            <li ng-if="5 + groupOfPages * 5 <= numberOfPages" ng-class="page == 4 ? 'active' : ''"><a ng-click="manageIntegrations(4)">{{5 + groupOfPages * 5}}</a></li>
+                            <li ng-if="numberOfPages > (groupOfPages + 1) * 5"><a ng-click="nextGroupOfPages()" class="fa fa-angle-right"></a></li>
+                        </ul>
+                      </div>
                     </div>
                 </div>
-                <!-- /.box-header -->
                 <div class="box-body table-responsive">
                   <table id="datatable" class="table table-bordered table-striped">
                     <thead>
@@ -57,7 +58,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr ng-repeat="integration in manualIntegrations | filter : Search">
+                    <tr ng-repeat="integration in showIntegrations">
                         <td>{{integration.IntegrationsType.Name}}</td>
                         <td>{{integration.IntegrationName}}</td>
                         <td>{{integration.IntegrationCategory.Name}}</td>
@@ -104,19 +105,10 @@
                     </tr>
                     </tfoot>
                   </table>
-                </div>          
-                <!-- /.box-body -->
+                </div>
               </div>
-              <!-- /.box -->
-             
             </div>
-            <!-- /.col -->
           </div>
-          <!-- /.row -->
         </section>
-        <!-- /.content -->
-
     </div>
-
-
 </div>

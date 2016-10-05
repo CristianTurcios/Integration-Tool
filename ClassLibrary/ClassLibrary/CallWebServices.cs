@@ -47,8 +47,6 @@ namespace ClassLibrary
             {
                 status = Convert.ToString(e.Status);              
                 query =ReturnErrorStatus(status, "403",integration.integrationId);
-
-                throw new ArgumentException(e.Message);
             }
             return query;
         }

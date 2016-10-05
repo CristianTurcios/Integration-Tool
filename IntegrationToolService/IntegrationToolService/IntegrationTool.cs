@@ -21,8 +21,8 @@ namespace IntegrationToolService
       
         protected override void OnStart(string[] args)
         {
-            var timer = new Timer { AutoReset = true, Interval = 3600000 };
-            //var timer = new Timer { AutoReset = true, Interval = 60000 };
+            //var timer = new Timer { AutoReset = true, Interval = 3600000 };
+            var timer = new Timer { AutoReset = true, Interval = 60000 };
             timer.Elapsed += timer_Elapsed;
             timer.Start();
         }

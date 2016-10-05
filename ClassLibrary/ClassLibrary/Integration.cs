@@ -47,7 +47,7 @@ namespace ClassLibrary
             }
             catch (System.Data.SqlClient.SqlException e)
             {
-                throw new ArgumentException(e.Message);
+                // throw new ArgumentException(e.Message);
             }    
         }
 
@@ -60,7 +60,7 @@ namespace ClassLibrary
             }
             catch (System.Data.SqlClient.SqlException e)
             {
-                throw new ArgumentException(e.Message);
+                // throw new ArgumentException(e.Message);
             }  
         }      
 
@@ -78,7 +78,7 @@ namespace ClassLibrary
             }
             catch (System.Data.SqlClient.SqlException e)
             {
-                throw new ArgumentException(e.Message);
+                // throw new ArgumentException(e.Message);
             }
      
             return table;
@@ -151,7 +151,7 @@ namespace ClassLibrary
 
             table = DataTable(query);
 
-            string queryToDatabase = ReplaceQueryParameters(table);
+            string queryToDatabase = ReplaceQueryParameters(table);           
 
             iNterfaceDatabase.openConnection();
             string resultQuery = iNterfaceDatabase.executeQuery(queryToDatabase);
@@ -291,15 +291,15 @@ namespace ClassLibrary
             }
             catch (System.Data.SqlClient.SqlException e)
             {
-                throw new ArgumentException(e.Message );
+                // throw new ArgumentException(e.Message );
             }
             catch (System.ArgumentException e)
             {
-                throw new ArgumentException(e.Message);
+                // throw new ArgumentException(e.Message);
             }
             catch (System.InvalidOperationException e)
             {
-                throw new ArgumentException(e.Message);
+                // throw new ArgumentException(e.Message);
             }
                     
             CloseConnection();

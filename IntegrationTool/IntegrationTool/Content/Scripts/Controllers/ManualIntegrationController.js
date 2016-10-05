@@ -1,11 +1,23 @@
-﻿var ManualIntegrationController = function ($scope, $http, $location, $state, $window) {
+﻿var ManualIntegrationController = function ($scope, $http, $location, $state, $window, $filter) {
     $scope.typeMessage = 0;
     $scope.message = "";
-    $scope.manualIntegrations = [];
     $scope.editManualIntegration = editManualIntegration;
     $scope.executeIntegration = executeIntegration;
     $scope.viewIntegrationLog = viewIntegrationLog;
     $scope.viewSystemLog = viewSystemLog;
+
+    $scope.manageIntegrations = manageIntegrations;
+    $scope.nextGroupOfPages = nextGroupOfPages;
+    $scope.prevGroupOfPages = prevGroupOfPages;
+    $scope.methodSearch = methodSearch;
+
+    $scope.search = '';
+    $scope.numberOfPages = 0;
+    $scope.groupOfPages = 0;
+    $scope.page = 0;
+    $scope.manualIntegrations = [];
+    $scope.searchIntegrations = [];
+    $scope.showIntegrations = [];
 
     $scope.isloading = true;
 
@@ -24,7 +36,29 @@
 
     getManualIntegrations();
 
-   
+    function manageIntegrations(page) {
+        $scope.page = page;
+        $scope.searchIntegrations = $filter('filter')($scope.manualIntegrations, $scope.search);
+        $scope.numberOfPages = Math.floor($scope.searchIntegrations.length / 5) + 1;
+        if ($scope.page + 1 > $scope.numberOfPages)
+            $scope.page = 0;
+        $scope.showIntegrations = $scope.searchIntegrations.slice(($scope.groupOfPages * 5 * 5) + ($scope.page * 5), ($scope.groupOfPages * 5 * 5) + ($scope.page * 5) + 5);
+    }
+
+    function nextGroupOfPages() {
+        $scope.groupOfPages = $scope.groupOfPages + 1;
+        manageIntegrations(0);
+    }
+
+    function prevGroupOfPages() {
+        $scope.groupOfPages = $scope.groupOfPages - 1;
+        manageIntegrations(0);
+    }
+
+    function methodSearch(search) {
+        $scope.search = search;
+        manageIntegrations($scope.page);
+    }
 
     function getManualIntegrations() {
         var config = {
@@ -38,6 +72,7 @@
         $http.get('Integration/getManualIntegrations', data, config).success(function (resp) {
             if (resp.type !== 'danger') {
                 $scope.manualIntegrations = resp;
+                manageIntegrations(0);
                 $scope.isloading = false;
             } else {
                 $scope.message = resp.message;
@@ -82,4 +117,4 @@
     }
 }
 
-ManualIntegrationController.$inject = ['$scope', '$http', '$location', '$state', '$window'];
+ManualIntegrationController.$inject = ['$scope', '$http', '$location', '$state', '$window', '$filter'];

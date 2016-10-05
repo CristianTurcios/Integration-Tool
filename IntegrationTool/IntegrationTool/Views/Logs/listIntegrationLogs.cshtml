@@ -27,7 +27,7 @@
                 
                <div class="pull-right">
                  <div class="form-group">
-                   <input ng-model="Search" type="text" class="form-control input-sm" placeholder="Search..." >                               
+                   <input ng-model="search" ng-change="methodSearch(search)" type="text" class="form-control input-sm" placeholder="Search..." >                               
                   </div>
                </div>
                              
@@ -45,7 +45,7 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="integrationLogs in listIntegrationLogs | filter : Search">
+                <tr ng-repeat="integrationLogs in showLogs">
                   <td>{{integrationLogs.ReferenceCode}}</td>
                   <td>{{integrationLogs.Status}}</td> 
                   <td>{{integrationLogs.Integration.IntegrationName}}</td>                   
@@ -72,6 +72,17 @@
                 </tr>
                 </tfoot>
               </table>
+            </div>
+            <div class="box-footer" ng-controller="AlertController">
+                <ul class="pagination pull-right">
+                    <li ng-if="groupOfPages != 0"><a ng-click="prevGroupOfPages()" class="fa fa-angle-left"></a></li>
+                    <li ng-if="1 + groupOfPages * 5 <= numberOfPages" ng-class="page == 0 ? 'active' : ''"><a ng-click="manageLogs(0)">{{1 + groupOfPages * 5}}</a></li>
+                    <li ng-if="2 + groupOfPages * 5 <= numberOfPages" ng-class="page == 1 ? 'active' : ''"><a ng-click="manageLogs(1)">{{2 + groupOfPages * 5}}</a></li>
+                    <li ng-if="3 + groupOfPages * 5 <= numberOfPages" ng-class="page == 2 ? 'active' : ''"><a ng-click="manageLogs(2)">{{3 + groupOfPages * 5}}</a></li>
+                    <li ng-if="4 + groupOfPages * 5 <= numberOfPages" ng-class="page == 3 ? 'active' : ''"><a ng-click="manageLogs(3)">{{4 + groupOfPages * 5}}</a></li>
+                    <li ng-if="5 + groupOfPages * 5 <= numberOfPages" ng-class="page == 4 ? 'active' : ''"><a ng-click="manageLogs(4)">{{5 + groupOfPages * 5}}</a></li>
+                    <li ng-if="numberOfPages > (groupOfPages + 1) * 5"><a ng-click="nextGroupOfPages()" class="fa fa-angle-right"></a></li>
+                </ul>
             </div>
             <!-- /.box-body -->
           </div>
