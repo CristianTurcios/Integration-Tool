@@ -37,6 +37,8 @@ namespace ClassLibrary
                  message = message.Replace("'", "");
                  string queryToLog2 = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class Send Mails: " + message + "','" + DateTime.Now + "'," + integration.integrationId + ")";
                  integration.insertLog(queryToLog2);
+
+                 throw e;
              }
              catch (System.IO.IOException e)
              {               
@@ -44,6 +46,8 @@ namespace ClassLibrary
                  message = message.Replace("'", "");
                  string queryToLog2 = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class Send Mails: " + message + "','" + DateTime.Now + "'," + integration.integrationId + ")";
                  integration.insertLog(queryToLog2);
+
+                 throw e;
              }
              catch (System.Net.Mail.SmtpException e)
              {
@@ -52,7 +56,7 @@ namespace ClassLibrary
                  string queryToLog2 = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class Send Mails: " + message + "','" + DateTime.Now + "'," + integration.integrationId + ")";
                  integration.insertLog(queryToLog2);
 
-                 throw new ArgumentException(e.Message);
+                 throw e;
              }
              catch (System.FormatException e)
              {
@@ -61,7 +65,7 @@ namespace ClassLibrary
                  string queryToLog2 = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class Send Mails: " + message + "','" + DateTime.Now + "'," + integration.integrationId + ")";
                  integration.insertLog(queryToLog2);
 
-                 throw new ArgumentException(e.Message);
+                 throw e;
              }                             
          }
     }

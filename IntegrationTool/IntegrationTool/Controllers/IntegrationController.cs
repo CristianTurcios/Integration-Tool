@@ -91,10 +91,15 @@ namespace IntegrationTool.Controllers
 
                 connectModel();
 
-                string format = "ddd MMM dd yyyy HH:mm:ss 'GMT'K '(Central America Standard Time)'";
+                string[] valuesStartDate = Request.Form["ExecutionStartDate"].Split('-');
+                string[] valuesEndDate = Request.Form["ExecutionEndDate"].Split('-');
 
-                DateTime executionStartDate = DateTime.ParseExact(Request.Form["ExecutionStartDate"], format, CultureInfo.CurrentCulture);
-                DateTime executionEndDate = DateTime.ParseExact(Request.Form["ExecutionEndDate"], format, CultureInfo.CurrentCulture);
+                DateTime executionStartDate = new DateTime(Convert.ToInt32(valuesStartDate[0]), Convert.ToInt32(valuesStartDate[1]),
+                                                            Convert.ToInt32(valuesStartDate[2]), Convert.ToInt32(valuesStartDate[3]),
+                                                            Convert.ToInt32(valuesStartDate[4]), Convert.ToInt32(valuesStartDate[5]));
+                DateTime executionEndDate = new DateTime(Convert.ToInt32(valuesEndDate[0]), Convert.ToInt32(valuesEndDate[1]),
+                                                            Convert.ToInt32(valuesEndDate[2]), Convert.ToInt32(valuesEndDate[3]),
+                                                            Convert.ToInt32(valuesEndDate[4]), Convert.ToInt32(valuesEndDate[5]));
 
                 integrationConfigurationModel.saveIntegrationSchedule(Convert.ToInt32(Request.Form["UserId"]),
                                                             Request.Form["IntegrationName"],
@@ -136,10 +141,15 @@ namespace IntegrationTool.Controllers
 
                 connectModel();
 
-                string format = "ddd MMM dd yyyy HH:mm:ss 'GMT'K '(Central America Standard Time)'";
+                string[] valuesStartDate = Request.Form["ExecutionStartDate"].Split('-');
+                string[] valuesEndDate = Request.Form["ExecutionEndDate"].Split('-');
 
-                DateTime executionStartDate = DateTime.ParseExact(Request.Form["ExecutionStartDate"], format, CultureInfo.CurrentCulture);
-                DateTime executionEndDate = DateTime.ParseExact(Request.Form["ExecutionEndDate"], format, CultureInfo.CurrentCulture);
+                DateTime executionStartDate = new DateTime(Convert.ToInt32(valuesStartDate[0]), Convert.ToInt32(valuesStartDate[1]),
+                                                            Convert.ToInt32(valuesStartDate[2]), Convert.ToInt32(valuesStartDate[3]),
+                                                            Convert.ToInt32(valuesStartDate[4]), Convert.ToInt32(valuesStartDate[5]));
+                DateTime executionEndDate = new DateTime(Convert.ToInt32(valuesEndDate[0]), Convert.ToInt32(valuesEndDate[1]),
+                                                            Convert.ToInt32(valuesEndDate[2]), Convert.ToInt32(valuesEndDate[3]),
+                                                            Convert.ToInt32(valuesEndDate[4]), Convert.ToInt32(valuesEndDate[5]));
 
                 integrationConfigurationModel.updateIntegrationSchedule(Convert.ToInt32(Request.Form["IntegrationId"]),
                                                             Convert.ToInt32(Request.Form["UserId"]),
@@ -420,7 +430,7 @@ namespace IntegrationTool.Controllers
             }
             catch (Exception e)
             {
-                resp = "{\"type\":\"danger\", \"message\":\"Error occurred in: "+e.TargetSite+". Please try again.\"}";
+                resp = "{\"type\":\"danger\", \"message\":\"" + e.Message + ".\"}";
             }
 
             response(resp);

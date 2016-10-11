@@ -29,13 +29,16 @@ namespace ClassLibrary
                     file.Close();
                 }
             }
-            catch (DirectoryNotFoundException e)
+            catch (System.IO.DirectoryNotFoundException e)
             {
                 string message = e.Message;
                 message = message.Replace("'","");
                 string query = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class WriteFile: " + message + "','" + DateTime.Now + "'," + integration.integrationId + ")";             
                 integration.insertLog(query);
-                throw new DirectoryNotFoundException(e.Message);
+
+                Integration.flag = false;
+
+                throw e;
             }
         
             return path+"|"+nameFile;

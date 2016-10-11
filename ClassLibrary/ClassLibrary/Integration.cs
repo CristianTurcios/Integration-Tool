@@ -23,6 +23,7 @@ namespace ClassLibrary
         private string location = "";
         string pathLog = "";
         public int integrationId = 0;
+        public static bool flag = true;
         private string queryStatus = "";
 
         public Integration(string server = "172.20.33.13", string databaseName = "IntegrationTool", string userId = "SISUser", string password = "test2016!")
@@ -47,7 +48,8 @@ namespace ClassLibrary
             }
             catch (System.Data.SqlClient.SqlException e)
             {
-                // throw new ArgumentException(e.Message);
+                Integration.flag = false;
+                throw e;
             }    
         }
 
@@ -60,7 +62,8 @@ namespace ClassLibrary
             }
             catch (System.Data.SqlClient.SqlException e)
             {
-                // throw new ArgumentException(e.Message);
+                Integration.flag = false;
+                throw e;
             }  
         }      
 
@@ -78,7 +81,8 @@ namespace ClassLibrary
             }
             catch (System.Data.SqlClient.SqlException e)
             {
-                // throw new ArgumentException(e.Message);
+                Integration.flag = false;
+                throw e;
             }
      
             return table;
@@ -95,6 +99,7 @@ namespace ClassLibrary
         //6
         public void executeIntegration(int integrationId)
         {
+            Integration.flag = true;
             this.integrationId = integrationId;
             string resultQueryAndNameIntegration = obtainDatabaseParameters(integrationId);
             string[] result = resultQueryAndNameIntegration.Split('$');
@@ -147,7 +152,7 @@ namespace ClassLibrary
             int queryId = Convert.ToInt32(table.Rows[0]["QueryId"]);
 
             string query = "SELECT dbo.Queries.Query, dbo.QueryParameters.Name, dbo.QueryParameters.Value FROM  dbo.Queries CROSS JOIN dbo.QueryParameters" +
-            " where QueryParameters.IntegrationId=" + integrationId + " and Queries.QueryId=" + queryId;
+            " where QueryParameters.IntegrationId=" + integrationId + " and Queries.QueryId=" + queryId + " order by QueryParameters.QueryParameterId desc ";
 
             table = DataTable(query);
 
@@ -158,6 +163,31 @@ namespace ClassLibrary
             iNterfaceDatabase.closeConnection();
 
             string nameIntegration = ReturnNameIntegration(integrationId);
+
+            ////
+            //Console.WriteLine("resultado del query");
+            //Console.WriteLine(resultQuery);
+         
+            string[] verifyLengthQuery = resultQuery.Split('%');
+
+            try
+            {
+                if (verifyLengthQuery[2] == null)
+                    Console.Write("");
+            }
+            catch (Exception e)
+            {
+
+                string message = e.Message;
+                message = message.Replace("'", "");
+                string query2 = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('query parameters returns no data','" + DateTime.Now + "'," + integrationId + ")";
+                Integration.flag = false; 
+                insertLog(query2);
+
+
+                throw new Exception("query parameters returns no data");
+            }
+            ////
 
             return resultQuery + "$" + nameIntegration;
         }
@@ -171,6 +201,9 @@ namespace ClassLibrary
             {
                 query = query.Replace(Convert.ToString(table.Rows[i]["Name"]), Convert.ToString(table.Rows[i]["Value"]));
             }
+
+            //Console.WriteLine("query que se va a ejecutar en la base");
+            //Console.WriteLine(query);
 
             return query;
         }
@@ -227,12 +260,8 @@ namespace ClassLibrary
             string URLwebServices = webServices[0] + webServices[1] + "/" + webServices[2];
             string UsernameAndPassword = webServices[4] + ":" + webServices[3];
            
-            //pathLog = location + "/LogIntegration.txt";
-            //string curlCommand = "curl -w '%{http_code}' -H Content-Type:text/plain --data-binary @" + fullPath + " -u " + webServices[4] + ":" + webServices[3] + " --url " + webServices[0] + webServices[1] + "/" + webServices[2] + "> " + pathLog;         
             queryStatus = callWebServices.webServicesCall(URLwebServices, UsernameAndPassword,fullPath, this);
 
-            //Console.WriteLine(curlCommand);
-            //curl.IntegrationWithCurl(curlCommand,this);
             Thread.Sleep(1000);
             sendEmail(fullPath);
         }
@@ -291,15 +320,15 @@ namespace ClassLibrary
             }
             catch (System.Data.SqlClient.SqlException e)
             {
-                // throw new ArgumentException(e.Message );
+                throw e;
             }
             catch (System.ArgumentException e)
             {
-                // throw new ArgumentException(e.Message);
+                throw e;
             }
             catch (System.InvalidOperationException e)
             {
-                // throw new ArgumentException(e.Message);
+                throw e;
             }
                     
             CloseConnection();

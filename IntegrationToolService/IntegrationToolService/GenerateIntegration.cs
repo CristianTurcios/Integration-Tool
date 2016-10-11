@@ -29,25 +29,6 @@ namespace IntegrationToolService
         }
 
 
-        public void prueba()
-        {
-
-            // Create a string array with the lines of text
-            string[] lines = { "First line", "Second line", "Third line" };
-
-            // Set a variable to the My Documents path.
-            string mydocpath =
-                Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments);
-
-            // Write the string array to a new file named "WriteLines.txt".
-            using (StreamWriter outputFile = new StreamWriter(mydocpath + @"C:\Users\cturcios\Documents\Prueba\Writelines.txt"))
-            {
-                foreach (string line in lines)
-                    outputFile.WriteLine(line);
-            }
-        }
-
-
         //0
         private void InitialConnection(string dataConnection)
         {
@@ -182,8 +163,19 @@ namespace IntegrationToolService
                 int calendarId = Convert.ToInt32(table.Rows[i]["CalendarId"]);
                 emails = Convert.ToString(table.Rows[i]["Emails"]);
 
-                updateTimeToExecuteIntegration(calendarId, setNewTimeToExecuteIntegration(recurrenceId, nextExecutionDate));             
-                integration.initIntegrationAutomatic(integrationId, emails);
+                updateTimeToExecuteIntegration(calendarId, setNewTimeToExecuteIntegration(recurrenceId, nextExecutionDate));
+
+                try
+                {
+                   integration.initIntegrationAutomatic(integrationId, emails);
+                }catch(Exception e)
+                {
+                    Console.WriteLine();
+                    Console.WriteLine("Error ocurred");
+                    Console.WriteLine("/////////////////");
+                    Console.WriteLine(e.Message);
+                    Console.WriteLine("/////////////////");
+                }
             }
         }
 

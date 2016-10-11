@@ -140,8 +140,12 @@ namespace IntegrationTool.Controllers
             // Encrypt the ticket.
             string encTicket = FormsAuthentication.Encrypt(ticket);
 
+            HttpCookie cookie = new HttpCookie(FormsAuthentication.FormsCookieName, encTicket);
+
+            cookie.Expires = ticket.Expiration;
+
             // Create the cookie.
-            Response.Cookies.Add(new HttpCookie(FormsAuthentication.FormsCookieName, encTicket));
+            Response.Cookies.Add(cookie);
         }
     }
 }

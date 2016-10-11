@@ -519,8 +519,10 @@ namespace IntegrationTool.Controllers
                     break;
                 }
             }
-            catch (Exception)
-            {}
+            catch (Exception e)
+            {
+                throw e;
+            }
 
             return path;
         }

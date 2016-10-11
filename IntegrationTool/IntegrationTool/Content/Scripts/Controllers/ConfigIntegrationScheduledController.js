@@ -1,4 +1,4 @@
-﻿var ConfigIntegrationScheduledController = function ($scope, $http, $stateParams, $state, Authentication, $location, $window) {
+﻿var ConfigIntegrationScheduledController = function ($scope, $http, $stateParams, $state, Authentication, $location, $window, $filter) {
     $scope.typeMessage = 0;
     $scope.message = "";
     $scope.type = $stateParams.id;
@@ -122,6 +122,7 @@
             $window.scrollTo(0, 0);
             return false;
         }
+
         var startDate = new Date(req.ExecutionStartDate);
         var endDate = new Date(req.ExecutionEndDate);
 
@@ -137,6 +138,9 @@
                 'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
             }
         }
+
+        req.ExecutionStartDate = $filter('date')(req.ExecutionStartDate, 'yyyy-MM-dd-HH-mm-ss')
+        req.ExecutionEndDate = $filter('date')(req.ExecutionEndDate, 'yyyy-MM-dd-HH-mm-ss')
 
         req.UserId = Authentication.user.UserId;
 
@@ -420,4 +424,4 @@
     }
 }
 
-ConfigIntegrationScheduledController.$inject = ['$scope', '$http', '$stateParams', '$state', 'Authentication', '$location', '$window'];
+ConfigIntegrationScheduledController.$inject = ['$scope', '$http', '$stateParams', '$state', 'Authentication', '$location', '$window', '$filter'];

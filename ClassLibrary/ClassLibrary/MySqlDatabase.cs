@@ -61,6 +61,10 @@ namespace ClassLibrary
                 message = message.Replace("'", "");
                 string query = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class Mysql: " + message + "','" + DateTime.Now + "'," + this.integration.integrationId + ")";
                 integration.insertLog(query);
+
+                Integration.flag = false;
+
+                throw e;
             }           
         }
 
@@ -76,6 +80,10 @@ namespace ClassLibrary
                 message = message.Replace("'", "");
                 string queryToLog2 = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class MySql: " + message + "','" + DateTime.Now + "'," + this.integration.integrationId + ")";
                 integration.insertLog(queryToLog2);
+
+                Integration.flag = false;
+
+                throw e;
             }              
         }
 
@@ -103,6 +111,10 @@ namespace ClassLibrary
                 message = message.Replace("'", "");
                 string queryToLog = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class MySql: " + message + "','" + DateTime.Now + "'," + this.integration.integrationId + ")";
                 integration.insertLog(queryToLog);
+
+                Integration.flag = false;
+
+                throw e;
             }
                   
             //closeConnection();

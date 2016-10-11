@@ -55,6 +55,10 @@ namespace ClassLibrary
                 message = message.Replace("'", "");
                 string queryToLog2 = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class SqlServer: " + message + "','" + DateTime.Now + "'," + this.integration.integrationId + ")";
                 integration.insertLog(queryToLog2);
+
+                Integration.flag = false;
+
+                throw e;
             }       
         }
 
@@ -86,7 +90,9 @@ namespace ClassLibrary
                 string queryToLog = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class SqlServer: " + message + "','" + DateTime.Now + "'," + this.integration.integrationId + ")";
                 integration.insertLog(queryToLog);
 
-                throw new Exception(e.Message);
+                Integration.flag = false;
+
+                throw e;
             }
             catch (System.Data.SqlClient.SqlException e)
             {
@@ -95,8 +101,10 @@ namespace ClassLibrary
                 string queryToLog = "insert into SystemLogs (Description,ErrorDate, IntegrationId) values('Class SqlServer: " + message + "','" + DateTime.Now + "'," + this.integration.integrationId + ")";
                 integration.insertLog(queryToLog);
 
-                throw new Exception(e.Message);
-            }
+                Integration.flag = false;
+                
+                throw e;
+            }           
         
             return result;
         }
